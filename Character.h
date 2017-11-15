@@ -20,6 +20,7 @@ class Character {
 private:
     skin fill;
     int speed;
+    Brush brush;
 public:
     point location;
 
@@ -28,7 +29,11 @@ public:
     Character(location p);
     Character(skin f);
     Character(int speed);
-    Character(skin f, location p);
+    Character(Brush brush);
+    Character(skin f, location p, Brush brush);
+
+
+
 
 
 };
