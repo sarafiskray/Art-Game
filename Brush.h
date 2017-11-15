@@ -10,7 +10,24 @@
 class Brush {
 
 private:
-    Color color;
+    //Size multiplier for the brush splatters
+    int size;
+    bool painting;
+    Splatter thisSplatter;
+
+public:
+    /*
+     * togglePaint
+     * Required: Nothing
+     * Modifies: bool painting
+     * Effects: toggles the draw functions for splatters on and off
+     */
+    void togglePaint() {
+        painting = !painting;
+        string descriptor;
+        painting ? descriptor = "on" : descriptor = "off";
+        
+    }
 
 };
 
