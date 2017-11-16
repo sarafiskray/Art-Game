@@ -27,7 +27,9 @@ public:
 
     //constructors
     Character() {
-
+        NormalBrush nb = brushes[0];
+        DottedBrush db = brushes[1];
+        currentBrush = brushes[0];
     };
     Character(location p);
     Character(skin f);
