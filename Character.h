@@ -26,7 +26,9 @@ public:
     point location;
 
     //constructors
-    Character();
+    Character() {
+
+    };
     Character(location p);
     Character(skin f);
     Character(int speed);
