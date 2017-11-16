@@ -29,6 +29,8 @@ public:
         cout << "Painting is now " << descriptor << endl;
     }
 
+    pure virtual void changeColor = 0;
+
 };
 
 #endif //THE_STATISTICS_BRUSH_H
