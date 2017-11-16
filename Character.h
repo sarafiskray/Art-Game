@@ -20,7 +20,8 @@ class Character {
 private:
     skin fill;
     int speed;
-    Brush brush;
+    Brush currentBrush;
+    vector<Brush> brushes;
 public:
     point location;
 
