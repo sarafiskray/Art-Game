@@ -49,29 +49,48 @@ public:
             cout << "Invalid color input" << endl;
         }
         else {
-            if (colorChoice == 1) {
-                //Make it red
-                color = (1, 0, 0);
-            }
-            else if (colorChoice == 2) {
-                //Orange
-                color = (1, .64, 0);
-            }
-            else if (colorChoice == 3) {
-                //Yellow
-                color = (1, 1, 0);
-            }
-            else if (colorChoice == 4) {
-                //Green
-                color = (0, .5, 0);
-            }
-            else if (colorChoice == 5) {
-                //Blue
-                color = (0, 0, 1);
-            }
-            else if (colorChoice == 6) {
-                //Purple
-                color = (.29, .64, 0);
+            switch(colorChoice) {
+                case (1):
+                    //Make it red
+                    color = (1, 0, 0);
+                    break;
+                case (2):
+                    //Orange
+                    color = (1, .64, 0);
+                    break;
+                case (3):
+                    //Yellow
+                    color = (1, 1, 0);
+                    break;
+                case (4):
+                    //Green
+                    color = (0, .5, 0);
+                    break;
+                case (5):
+                    //Blue
+                    color = (0, 0, 1);
+                    break;
+                case (6):
+                    //Purple
+                    color = (.29, 0, .5);
+                    break;
+                case (7):
+                    //Pink
+                    color = (1, .75, .80);
+                    break;
+                case (8):
+                    //White
+                    color = (1, 1, 1);
+                    break;
+                case (9):
+                    //Gray
+                    color = (.75, .75, .75);
+                    break;
+                case (0):
+                    //Black
+                    color = (0, 0, 0);
+                    break;
+
             }
         }
     }
