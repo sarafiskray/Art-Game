@@ -26,7 +26,7 @@ public:
         painting = !painting;
         string descriptor;
         painting ? descriptor = "on" : descriptor = "off";
-        
+        cout << "Painting is now " << descriptor << endl;
     }
 
 };
