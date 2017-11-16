@@ -33,6 +33,9 @@ public:
     Character(skin f, location p, Brush brush);
 
 
+    //getters
+
+    //setters
 
 
 
