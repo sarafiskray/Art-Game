@@ -32,13 +32,25 @@ public:
     point location;
 
     //constructors
-    Character();
+    Character() {
+        NormalBrush nb = brushes[0];
+        DottedBrush db = brushes[1];
+        currentBrush = brushes[0];
+    };
     Character(location p);
     Character(skin f);
     Character(int speed);
     Character(Brush brush);
     Character(skin f, location p, Brush brush);
 
+
+    void changeBrush() {
+           for (int i = 0; i < brushes.size(); i++) {
+               if (brushes[i] == currentBrush) {
+                   currentBrush = brushes[i+1];
+               }
+           }
+    }
 
     //getters
 
