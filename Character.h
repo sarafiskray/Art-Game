@@ -11,7 +11,7 @@ struct skin {
     double blue;
 };
 
-struct point {
+struct Point {
     int x;
     int y;
 };
@@ -22,6 +22,12 @@ private:
     int speed;
     Brush currentBrush;
     vector<Brush> brushes;
+    Point location;
+
+    //Two Momentums for controlling how the character responds and keeps moving after the player is not still running
+    int horizontalMomentum;
+    int verticalMomentum;
+
 public:
     point location;
 
@@ -36,8 +42,24 @@ public:
 
     //getters
 
+    //Returns struct Point with X and Y
+    Point getLocation() const;
+    //Returns x of location
+    int getX() const;
+    //Returns y of location
+    int getY() const;
+
+
     //setters
 
+
+    //Methods
+    //Controls the character if the player is not pressing anything; lets momentum do most of the work. Also calls getBeneath()
+    void be();
+
+    void moveLeft();
+    void moveRight();
+    void jump();
 
 
 };
