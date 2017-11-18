@@ -51,12 +51,16 @@ public:
     double getArea() const;
     //gets color of character
     color getSkin() const;
+    int getHMomentum() const;
+    int getVMomentum() const;
 
     //setters
     void setSkin(skin f);
     void setSkin(double r, double g, double b);
     void setLocation(location p);
     void setLocation(int xIn, int yIn);
+    void setHMomentum(int x);
+    void setVMomentum(int x);
 
 
 
