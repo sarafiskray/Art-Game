@@ -8,13 +8,43 @@ Character::Character() {
     NormalBrush nb = brushes[0];
     DottedBrush db = brushes[1];
     currentBrush = brushes[0];
+
+    fill = {0, 0, 0};
+    width = 2;
+    height = 2;
+    brushes = {new DottedBrush, new NormalBrush};
+    currentBrush = brushes[0];
+    brushSelection = 0;
+
+    horizontalMomentum = 0;
+    verticalMomentum = 0;
+
+    location.x = 60;
+    location.y = 60;
+
+
 };
 
-//Getters
+Character::Character(skin f, int xIn, int yIn) {
+    Character();
 
-int Character::getArea() const {
-    return (width * height);
+    fill = f;
+    location.x = xIn;
+    location.y = yIn;
+
 }
+
+Character::Character(point p) {
+    location = p;
+}
+
+Character::Character(skin f, point p, Brush brush){
+    fill = f;
+    location = p;
+    currentBrush = brush;
+}
+
+
 
 int Character::getHMomentum() const {
     return horizontalMomentum;
@@ -109,8 +139,11 @@ void Character::jump() {
 }
 
 void Character::fall() {
-    verticalMomentum -= 4;
-    for (verticalMomentum; verticalMomentum < 0; verticalMomentum++) {
-        location.y += verticalMomentum;
+    if(!thisMap.getBeneath(location)) {
+
+        verticalMomentum -= 4;
+        for (verticalMomentum; verticalMomentum < 0; verticalMomentum++) {
+            location.y += verticalMomentum;
+        }
     }
 }
