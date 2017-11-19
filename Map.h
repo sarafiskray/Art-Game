@@ -13,7 +13,10 @@ private:
     //drawing that character creates, also stored by coordinates
     vector< vector <Splatter> > drawing;
     //name of file
-    string mapFile;
+    string mapFile = "mapFile.txt";
+
+    int NUMROW = 10;
+    int NUMCOLUMN = 10;
 
 public:
 
