@@ -23,6 +23,10 @@ public:
         fill.green = g;
         fill.blue = b;
     }
+
+    void setFill(skin fillIn);
+
+    skin getFill() const;
 };
 
 #endif //THE_STATISTICS_SPLATTER_H
