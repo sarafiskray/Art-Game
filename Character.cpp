@@ -101,13 +101,35 @@ void Character::setSkin(double r, double g, double b) {
 void Character::be() {
     //If the character has any momentum to the left or right, make him move that way, but iterate down
     if (horizontalMomentum != 0) {
-        for (horizontalMomentum; horizontalMomentum > 0; horizontalMomentum--) {
+        if (horizontalMomentum > 0) {
             moveRight(5 * horizontalMomentum);
+            horizontalMomentum--;
         }
-        for (horizontalMomentum; horizontalMomentum < 0; horizontalMomentum++) {
-            moveLeft(5 * horizontalMomentum);
+
+        else {
+            moveLeft(5 * -horizontalMomentum);
+            horizontalMomentum++;
         }
     }
+
+    //If the player has upward momentum, it moves up proportional to the momentum and then decreases that
+    if (verticalMomentum > 0) {
+        location.y += (verticalMomentum * 3);
+        verticalMomentum--;
+    }
+        //if there is nothing underneath the character, then it calls the fall function
+    else {
+        if (!thisMap.isBeneath()) {
+            fall();
+        }
+    }
+
+    //If the character is landed, it has no vertical momentum
+    if (thisMap.isBeneath())  {
+        verticalMomentum = 0;
+    }
+
+
 }
 
 void Character::changeBrush() {
@@ -132,18 +154,12 @@ void Character::moveRight() {
 
 void Character::jump() {
     verticalMomentum += 4;
-    for (verticalMomentum; verticalMomentum > 0; verticalMomentum--) {
-        location.y +=  verticalMomentum;
-    }
+    location.y -= 4;
 
 }
 
 void Character::fall() {
-    if(!thisMap.getBeneath(location)) {
 
-        verticalMomentum -= 4;
-        for (verticalMomentum; verticalMomentum < 0; verticalMomentum++) {
-            location.y += verticalMomentum;
-        }
-    }
+    location.y += 4 * -verticalMomentum;
+    verticalMomentum--;
 }
