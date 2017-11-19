@@ -6,22 +6,50 @@
 #define THE_STATISTICS_MAP_H
 
 class Map {
-public:
-    //platforms on map that character can stand on
-    vector<Platform> platforms;
-    //drawing that character creates
-    vector<Splatter> drawing;
+
+private:
+    //Platform vector actually stores integers at each location in the 2D array. a
+    vector< vector <int> > platforms;
+    //drawing that character creates, also stored by coordinates
+    vector< vector <Splatter> > drawing;
     //name of file
     string mapFile;
-    //constructor
+
+public:
+
+    //constructor, makes vectors 10x10
     Map();
     //maybe more constructors to come
-    //method to save drawing
+    /*
+     * saveDrawing
+     * Requires: A valid mapFile
+     * Modifies: Nothing, except the mapFile itself
+     * Effects: Writes to mapFile the indeces of each Splatter
+     */
     void saveDrawing() const;
-    //method to load drawing from file
+
+    /*
+     * loadDrawing
+     * Requires: A valid mapFile
+     * Modifies: drawing vector
+     * Effects: Adds a splatter to drawing vector at the indeces found in the mapFile
+     */
     void loadDrawing() const;
-    //method to clear existing drawing
+    /*
+     * clearDrawing
+     * Requires: Nothing
+     * Modifies: drawing vector
+     * Effects: Removes all of the splatters from the drawing vector
+     */
     void clearDrawing();
+
+    /*
+     * isBeneath
+     * Requires: point p, which is character location
+     * Modifies: Nothing
+     * Effects: Returns whether or not the coordinates directly below the player are filled
+     */
+    bool isBeneath(point p);
 
 
 };
