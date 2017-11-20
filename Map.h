@@ -15,8 +15,8 @@ private:
     //name of file
     string mapFile = "mapFile.txt";
 
-    int NUMROW = 10;
-    int NUMCOLUMN = 10;
+    int NUMROW = 100;
+    int NUMCOLUMN = 100;
 
 public:
 

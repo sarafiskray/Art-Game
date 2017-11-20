@@ -21,8 +21,6 @@ Character::Character() {
 
     location.x = 60;
     location.y = 60;
-
-
 };
 
 Character::Character(skin f, int xIn, int yIn) {
@@ -31,7 +29,6 @@ Character::Character(skin f, int xIn, int yIn) {
     fill = f;
     location.x = xIn;
     location.y = yIn;
-
 }
 
 Character::Character(point p) {
@@ -128,8 +125,6 @@ void Character::be() {
     if (thisMap.isBeneath())  {
         verticalMomentum = 0;
     }
-
-
 }
 
 void Character::changeBrush() {
@@ -143,18 +138,26 @@ void Character::changeBrush() {
 }
 
 void Character::moveLeft() {
-    location.x -= (horizontalMomentum * 3) + 2;
-    horizontalMomentum--;
+    //So one doesn't go off the screen
+    if (!location.x == 0) {
+        location.x -= (horizontalMomentum * 3) + 2;
+        horizontalMomentum--;
+    }
 }
 
 void Character::moveRight() {
-    location.x += (horizontalMomentum * 3) + 2;
-    horizontalMomentum++;
+    //So one doesn't go off the screen
+    if (!location.x == 100) {
+        location.x += (horizontalMomentum * 3) + 2;
+        horizontalMomentum++;
+    }
 }
 
 void Character::jump() {
     verticalMomentum += 4;
     location.y -= 4;
+
+    //Character actually can go above the stage, so no special case
 
 }
 
@@ -162,4 +165,10 @@ void Character::fall() {
 
     location.y += 4 * -verticalMomentum;
     verticalMomentum--;
+
+    //If it falls through the floor, then put it back in the center. Shouldn't happen anyway
+    if (location.y > 100) {
+        location.x = 50;
+        location.y = 50;
+    }
 }
