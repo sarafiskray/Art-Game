@@ -9,10 +9,6 @@
 
 
 Character::Character() {
-    NormalBrush nb = brushes[0];
-    DottedBrush db = brushes[1];
-    currentBrush = brushes[0];
-
     fill = {0, 0, 0};
     width = 2;
     height = 2;
@@ -72,6 +68,10 @@ int Character::getY() const {
 //To be implemented with graphics: character RGB
 color Character::getSkin() const {
     return skin;
+}
+
+Brush Character::getBrush() const {
+    return currentBrush;
 }
 
 void Character::setHMomentum(int x) {

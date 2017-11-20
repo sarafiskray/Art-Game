@@ -7,8 +7,20 @@
 using namespace std;
 
 int main() {
+    //Some arbitrary testing data
+    point p = {30, 30};
+    //I wanna say this is gray?
+    skin f = {.2, .2, .2};
+
 
     Character johnny;
+    Character jackie(p);
+    Character jimmy(f, p, new DottedBrush);
+    Character jenny(f, 15, 15);
+
+    //Test Constructors
+    cout << "Jackie location: " << jackie.getX() << "," << jackie.getY() << endl;
+    cout << "Jimmy brush: " << jimmy.getBrush().getName() << endl;
 
     //Called with the left button in graphics or with A
     //Be is used on every refresh, and includes the fall() function, so will not fall until we call that
@@ -40,15 +52,30 @@ int main() {
     johnny.moveRight();
     johnny.jump();
 
-    //Should be 2
-    cout << "Char horizontal momentum (- -> + = L -> R): " << johnny.getHMomentum() << endl;
-    //Should be 4
-    cout << "Char vertical momentum (- -> + = Down -> Up): " << johnny.getVMomentum() << endl;
+    //Test Fill
+    skin s = {.5, .5, .5};
+    johnny.setSkin(s);
+    cout << "Char color: R:" <<johnny.getSkin().red << " G:" << johnny.getSkin().green << " B:" << johnny.getSkin() << endl;
+    johnny.setSkin(.1, .1, .1);
+    cout << "Char color: R:" <<johnny.getSkin().red << " G:" << johnny.getSkin().green << " B:" << johnny.getSkin() << endl;
 
-    //These should both reflect the last location given by jump
+    //Test location
+    johnny.setLocation(p);
+    cout << "Char x location: " << johnny.getLocation().x << " and Y: " << johnny.getLocation().y << endl;
+    johnny.setLocation(60, 60);
+    cout << "Char x location: " << johnny.getLocation().x << " and Y: " << johnny.getLocation().y << endl;
+
+    //Test getX and getY
     cout << "Char x location: " << johnny.getX() << endl;
     cout << "Char y location: " << johnny.getY() << endl;
-    cout << "Char x location: " << johnny.getLocation().x << " and Y: " << johnny.getLocation().y << endl;
+
+    //Test Momentum
+    johnny.setHMomentum(2);
+    //Should be 2
+    cout << "Char horizontal momentum (- -> + = L -> R): " << johnny.getHMomentum() << endl;
+    johnny.setVMomentum(4);
+    //Should be 4
+    cout << "Char vertical momentum (- -> + = Down -> Up): " << johnny.getVMomentum() << endl;
 
 
     return 0;
