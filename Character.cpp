@@ -125,6 +125,10 @@ void Character::be() {
     if (thisMap.isBeneath())  {
         verticalMomentum = 0;
     }
+
+    //Now report where the character is
+    cout << "X: " << location.x << " Y: " << location.y << endl;
+
 }
 
 void Character::changeBrush() {
@@ -143,6 +147,9 @@ void Character::moveLeft() {
         location.x -= (horizontalMomentum * 3) + 2;
         horizontalMomentum--;
     }
+
+    cout << "X: " << location.x << " Y: " << location.y << endl;
+
 }
 
 void Character::moveRight() {
@@ -151,6 +158,9 @@ void Character::moveRight() {
         location.x += (horizontalMomentum * 3) + 2;
         horizontalMomentum++;
     }
+
+    cout << "X: " << location.x << " Y: " << location.y << endl;
+
 }
 
 void Character::jump() {
@@ -158,6 +168,8 @@ void Character::jump() {
     location.y -= 4;
 
     //Character actually can go above the stage, so no special case
+
+    cout << "X: " << location.x << " Y: " << location.y << endl;
 
 }
 
@@ -171,4 +183,7 @@ void Character::fall() {
         location.x = 50;
         location.y = 50;
     }
+
+    cout << "X: " << location.x << " Y: " << location.y << endl;
+
 }
