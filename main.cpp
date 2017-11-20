@@ -17,7 +17,9 @@ int main() {
     //Be is called on every refresh, so technically it should be called far more times than this.
     //Because of that, this character will fall much slower than it will
     johnny.be();
-    johnny.be();
+    johnny.be();//good
+
+    johnny.jump();
 
     return 0;
 }

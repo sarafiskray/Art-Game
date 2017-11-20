@@ -5,6 +5,7 @@
 #ifndef THE_STATISTICS_CHARACTER_H
 #define THE_STATISTICS_CHARACTER_H
 
+#include "Map.h"
 
 //Josh and Saraf the character will be a rectangle to make it
 //easier for collosion detection. Maybe we can draw a character
@@ -86,6 +87,8 @@ private:
     //Two Momentums for controlling how the character responds and keeps moving after the player is not still running
     int horizontalMomentum;
     int verticalMomentum;
+
+    Map thisMap;
 
 
 };

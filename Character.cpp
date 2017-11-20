@@ -4,6 +4,7 @@
 
 #include "Character.h"
 
+
 Character::Character() {
     NormalBrush nb = brushes[0];
     DottedBrush db = brushes[1];
@@ -21,6 +22,8 @@ Character::Character() {
 
     location.x = 60;
     location.y = 60;
+
+    thisMap = new Map();
 };
 
 Character::Character(skin f, int xIn, int yIn) {
@@ -164,8 +167,12 @@ void Character::moveRight() {
 }
 
 void Character::jump() {
-    verticalMomentum += 4;
-    location.y -= 4;
+    //Only works if you have something to jump off of
+    if (thisMap.isBeneath()) {
+        verticalMomentum += 4;
+        location.y -= 4;
+
+    }
 
     //Character actually can go above the stage, so no special case
 
