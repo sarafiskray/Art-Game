@@ -10,3 +10,7 @@ void Brush::togglePaint() {
     painting ? descriptor = "on" : descriptor = "off";
     cout << "Painting is now " << descriptor << endl;
 }
+
+string Brush::getBrush() {
+    return brushName;
+}

@@ -16,8 +16,13 @@ private:
     bool painting;
     //The splatter being painted currently
     Splatter thisSplatter;
+    //Name for brush
+    string brushName;
 
 public:
+    string getBrush;
+    //No setBrush, brush is set by changeBrush
+
     /*
      * togglePaint
      * Required: Nothing

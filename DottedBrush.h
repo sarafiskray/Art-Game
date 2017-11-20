@@ -8,10 +8,12 @@
 
 class DottedBrush : public Brush {
 private:
-
+    int dottedSpeed;
 public:
     DottedBrush();
 
+    int getDottedSpeed() const;
+    void setDottedSpeed(int speedIn);
 
 };
 
