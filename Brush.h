@@ -10,9 +10,11 @@
 class Brush {
 
 private:
-    //Size multiplier for the brush splatters
+    //Size multiplier for the brush splatters. To be implemented with graphics
     int size;
+    //Whether or not the brush is currently painting
     bool painting;
+    //The splatter being painted currently
     Splatter thisSplatter;
 
 public:
@@ -23,12 +25,15 @@ public:
      * Effects: toggles the draw functions for splatters on and off
      */
     void togglePaint() {
-        painting = !painting;
-        string descriptor;
-        painting ? descriptor = "on" : descriptor = "off";
-        cout << "Painting is now " << descriptor << endl;
     }
 
+    /*
+     * changeColor
+     * Requires: Nothing
+     * Modifies: thisSplatter
+     * Effects: Changes this splatter to a splatter of the selected color
+     * Pure virtual because some brushes don't have just one color
+     */
     pure virtual void changeColor = 0;
 
 };
