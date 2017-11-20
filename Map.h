@@ -20,7 +20,7 @@ private:
 
 public:
 
-    //constructor, makes vectors 10x10
+    //constructor, makes vectors 100x100 and initializes the map a bit
     Map();
     //maybe more constructors to come
     /*

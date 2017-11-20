@@ -5,12 +5,15 @@
 #include "Map.h"
 
 Map::Map() {
-    //Makes platforms a 10x10
-    platforms.resize(10, vector<int>(10, 0));
-    //Make drawing a 10x10
-    drawings.resize(10, vector<Splatter>(10, nullptr));
+    //Makes platforms a 100x100, or NUMCOLUMNxNUMROW
+    platforms.resize(NUMCOLUMN, vector<int>(NUMROW, 0));
+    //Make drawing a 100x100
+    drawings.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
 
-
+    //Make the bottom row full, at least
+    for (int i = 0; i < NUMCOLUMN; i++ ) {
+        platforms[i][NUMROW - 1] = 1;
+    }
 }
 
 void Map::saveDrawing() const{
