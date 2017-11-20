@@ -69,10 +69,10 @@ public:
     void be();
     void changeBrush();
     //character moves left and right on x axis
-    void moveLeft(int deltaX);
-    void moveRight(int deltaX);
+    void moveLeft();
+    void moveRight();
     //character changes position on y axis
-    void jump(int deltaY);
+    void jump();
     
 
 private:
