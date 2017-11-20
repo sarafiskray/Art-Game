@@ -36,6 +36,20 @@ int main() {
     //Other testing
     johnny.changeBrush();
 
+    johnny.moveRight();
+    johnny.moveRight();
+    johnny.jump();
+
+    //Should be 2
+    cout << "Char horizontal momentum (- -> + = L -> R): " << johnny.getHMomentum() << endl;
+    //Should be 4
+    cout << "Char vertical momentum (- -> + = Down -> Up): " << johnny.getVMomentum() << endl;
+
+    //These should both reflect the last location given by jump
+    cout << "Char x location: " << johnny.getX() << endl;
+    cout << "Char y location: " << johnny.getY() << endl;
+    cout << "Char x location: " << johnny.getLocation().x << " and Y: " << johnny.getLocation().y << endl;
+
 
     return 0;
 }

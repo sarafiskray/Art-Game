@@ -3,6 +3,9 @@
 //
 
 #include "Character.h"
+#include "Brush.h"
+#include "NormalBrush.h"
+#include "DottedBrush.h"
 
 
 Character::Character() {
@@ -142,6 +145,8 @@ void Character::changeBrush() {
     else {
         currentBrush = brushes[++brushSelection];
     }
+
+    cout << "New Brush: " << currentBrush.getBrush << endl;
 }
 
 void Character::moveLeft() {
