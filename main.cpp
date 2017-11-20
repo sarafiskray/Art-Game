@@ -77,6 +77,14 @@ int main() {
     //Should be 4
     cout << "Char vertical momentum (- -> + = Down -> Up): " << johnny.getVMomentum() << endl;
 
+    //Test Map methods
 
+    johnny.thisMap.saveDrawing();
+    johnny.thisMap.clearDrawing();
+    johnny.thisMap.loadDrawing();
+
+    cout << "is there something beneath (5, 99)? : " >> johnny.thisMap.isBeneath({5, 99});
+
+    
     return 0;
 }

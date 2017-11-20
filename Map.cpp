@@ -38,6 +38,8 @@ void Map::saveDrawing() const{
                 }
             }
         }
+
+        cout << "Drawing was saved to the file." << endl;
     }
 }
 
@@ -62,15 +64,18 @@ void Map::loadDrawing() const {
             fileIn >> loc.x;
             fileIn >> junk;
             fileIn >> loc.y;
+
+            //Puts a splatter in the place where we said it would be, of that fill
+            drawing[loc.y][loc.x] = new Splatter(r, g, b);
         }
 
-        //Puts a splatter in the place where we said it would be, of that fill
-        drawing[loc.y][loc.x] = new Splatter(r, g, b);
+        cout << "File loaded into the drawings vector" << endl;
     }
 }
 
 void Map::clearDrawing() {
-    drawings.resize(10, vector<Splatter>(10, nullptr));
+    drawings.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
+    cout << "Drawing cleared" << endl;
 }
 
 bool Map::isBeneath(point p) {
