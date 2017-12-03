@@ -6,7 +6,8 @@
 using namespace std;
 
 int main() {
-
+    Character ch;
+    ch.changeBrush();
 
 
 

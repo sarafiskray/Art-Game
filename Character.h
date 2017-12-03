@@ -42,6 +42,7 @@ public:
            for (int i = 0; i < brushes.size(); i++) {
                if (brushes[i] == currentBrush) {
                    currentBrush = brushes[i+1];
+                   cout << "Brush has been changed." << endl;
                }
            }
     }
