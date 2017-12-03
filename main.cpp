@@ -85,6 +85,6 @@ int main() {
 
     cout << "is there something beneath (5, 99)? : " >> johnny.thisMap.isBeneath({5, 99});
 
-    
+
     return 0;
 }
