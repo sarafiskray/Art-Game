@@ -9,6 +9,7 @@
 #include "Map.h"
 #include <vector>
 #include "graphics.h"
+#include "Headings.h"
 
 
 //Josh and Saraf the character will be a rectangle to make it
@@ -17,16 +18,8 @@
 
 //Skin really ought to be called fill, but we were thinking about character skins in video games while writing this
 //We are not racist
-struct skin {
-    double red;
-    double green;
-    double blue;
-};
 
-struct point {
-    int x;
-    int y;
-};
+#include "Headings.h"
 
 class Character {
 public:

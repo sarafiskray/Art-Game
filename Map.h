@@ -18,8 +18,8 @@ private:
     //name of file
     string mapFile = "mapFile.txt";
 
-    int NUMROW = 100;
-    int NUMCOLUMN = 100;
+    int NUMROW = 500;
+    int NUMCOLUMN = 500;
 
 public:
 
@@ -57,8 +57,21 @@ public:
      */
     bool isBeneath(point p);
 
+    /*
+     * drawArt
+     * Requires: Nothing
+     * Modifies: Nothing
+     * Effects: Draws the art saved in the drawing vector onto the canvas
+     */
     void drawArt() const;
 
+    /*
+     * drawMap
+     * Requires: Nothing
+     * Modifies: Nothing
+     * Effects: Draws the platforms saved in platforms onto the canvas
+     */
+    void drawMap() const;
 
 };
 
