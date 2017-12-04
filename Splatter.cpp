@@ -11,3 +11,17 @@ skin Splatter::getFill() const {
 void Splatter::setFill(skin fillIn) {
     fill = fillIn;
 }
+
+void Splatter::draw() const {
+    glColor3f(fill.red, fill.green, fill.blue);
+    glBegin(GL_QUADS);
+    // top left corner
+    glVertex2i(location.x, location.y);
+    // bottom left corner
+    glVertex2i(location.x, location.y + height);
+    // bottom right corner
+    glVertex2i(location.x + width, location.y + height);
+    // top right corner
+    glVertex2i(location.x + width, location.y);
+    glEnd();
+}

@@ -3,6 +3,10 @@
 //
 
 #include "Map.h"
+#include "Splatter.h"
+#include <iostream>
+
+
 
 Map::Map() {
     //Makes platforms a 100x100, or NUMCOLUMNxNUMROW
@@ -25,11 +29,11 @@ void Map::saveDrawing() const{
         for (int i = 0; i < NUMCOLUMN; i ++ ) {
             for (int ii = 0; ii < NUMROW; ii ++) {
                 if (drawing[i][ii] != nullptr) {
-                    fileIn << drawing[i][ii].fill.red;
+                    fileIn << drawing[i][ii].getFill().red;
                     fileIn << ";";
-                    fileIn << drawing[i][ii].fill.blue;
+                    fileIn << drawing[i][ii].getFill().blue;
                     fileIn << ";";
-                    fileIn << drawing[i][ii].fill.green;
+                    fileIn << drawing[i][ii].getFill().green;
                     fileIn << ";";
                     fileIn << i;
                     fileIn << ";";
@@ -66,7 +70,7 @@ void Map::loadDrawing() const {
             fileIn >> loc.y;
 
             //Puts a splatter in the place where we said it would be, of that fill
-            drawing[loc.y][loc.x] = new Splatter(r, g, b);
+            drawing[loc.y][loc.x] = new Splatter(r, g, b, loc.x, loc.y);
         }
 
         cout << "File loaded into the drawings vector" << endl;
@@ -74,10 +78,24 @@ void Map::loadDrawing() const {
 }
 
 void Map::clearDrawing() {
-    drawings.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
+    drawing.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
     cout << "Drawing cleared" << endl;
 }
 
 bool Map::isBeneath(point p) {
     return (platforms[p.x][p.y] == 1);
+}
+
+void Map::drawArt() const{
+    glColor3f(1, 1, 1);
+    glBegin(GL_QUADS);
+    // top left corner
+    glVertex2i(0,0);
+    // bottom left corner
+    glVertex2i(position.x, position.y + height);
+    // bottom right corner
+    glVertex2i(position.x + width, position.y + height);
+    // top right corner
+    glVertex2i(position.x + width, position.y);
+    glEnd();
 }

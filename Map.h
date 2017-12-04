@@ -5,6 +5,7 @@
 #ifndef THE_STATISTICS_MAP_H
 #define THE_STATISTICS_MAP_H
 
+
 #include "Splatter.h"
 
 class Map {
@@ -54,7 +55,9 @@ public:
      * Modifies: Nothing
      * Effects: Returns whether or not the coordinates directly below the player are filled
      */
-    bool isBeneath(struct point p);
+    bool isBeneath(point p);
+
+    void drawArt() const;
 
 
 };

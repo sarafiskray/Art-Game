@@ -107,12 +107,12 @@ void Character::be() {
     //If the character has any momentum to the left or right, make him move that way, but iterate down
     if (horizontalMomentum != 0) {
         if (horizontalMomentum > 0) {
-            moveRight(5 * horizontalMomentum);
+            moveRight();
             horizontalMomentum--;
         }
 
         else {
-            moveLeft(5 * -horizontalMomentum);
+            moveLeft();
             horizontalMomentum++;
         }
     }
@@ -130,7 +130,7 @@ void Character::be() {
     }
 
     //If the character is landed, it has no vertical momentum
-    if (thisMap.isBeneath())  {
+    if (thisMap.isBeneath()  {
         verticalMomentum = 0;
     }
 
@@ -200,4 +200,18 @@ void Character::fall() {
 
     cout << "X: " << location.x << " Y: " << location.y << endl;
 
+}
+
+void Character::draw() const {
+    glColor3f(fill.red, fill.green, fill.blue);
+    glBegin(GL_QUADS);
+    // top left corner
+    glVertex2i(location.x, location.y);
+    // bottom left corner
+    glVertex2i(location.x, location.y + height);
+    // bottom right corner
+    glVertex2i(location.x + width, location.y + height);
+    // top right corner
+    glVertex2i(location.x + width, location.y);
+    glEnd();
 }
