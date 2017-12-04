@@ -14,7 +14,7 @@ private:
     //Platform vector actually stores integers at each location in the 2D array. a
     vector< vector <int> > platforms;
     //drawing that character creates, also stored by coordinates
-    vector< vector <Splatter> > drawing;
+    vector<Splatter> drawing;
     //name of file
     string mapFile = "mapFile.txt";
 

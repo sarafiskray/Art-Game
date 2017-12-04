@@ -33,6 +33,12 @@ public:
 
     skin getFill() const;
 
+    void setX(int xIn);
+    void setY(int yIn);
+
+    int getX() const;
+    int getY() const;
+
     void draw() const;
 };
 

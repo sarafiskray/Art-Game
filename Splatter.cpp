@@ -12,6 +12,21 @@ void Splatter::setFill(skin fillIn) {
     fill = fillIn;
 }
 
+int Splatter::getX() const {
+    return location.x;
+}
+int Splatter::getY() const {
+    return location.y;
+}
+
+void Splatter::setX(int xIn) {
+    location.x = xIn;
+}
+
+void Splatter::setY(int yIn) {
+    location.y = yIn;
+}
+
 void Splatter::draw() const {
     glColor3f(fill.red, fill.green, fill.blue);
     glBegin(GL_QUADS);

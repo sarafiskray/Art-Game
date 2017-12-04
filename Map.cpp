@@ -29,26 +29,22 @@ void Map::saveDrawing() const{
     if (fileIn) {
         cout << "File opened successfully" << endl;
 
-        for (int i = 0; i < NUMCOLUMN; i ++ ) {
-            for (int ii = 0; ii < NUMROW; ii ++) {
-                if (drawing[i][ii].g ) {
-                    fileIn << drawing[i][ii].getFill().red;
-                    fileIn << ";";
-                    fileIn << drawing[i][ii].getFill().blue;
-                    fileIn << ";";
-                    fileIn << drawing[i][ii].getFill().green;
-                    fileIn << ";";
-                    fileIn << i;
-                    fileIn << ";";
-                    fileIn << ii;
-                    fileIn << endl;
-                }
+        for (Splatter splat : drawing) {
+                fileIn << splat.getFill().red;
+                fileIn << ";";
+                fileIn << splat.getFill().blue;
+                fileIn << ";";
+                fileIn << splat.getFill().green;
+                fileIn << ";";
+                fileIn << splat.getX();
+                fileIn << ";";
+                fileIn << splat.getY();
+                fileIn << endl;
             }
         }
-
-        cout << "Drawing was saved to the file." << endl;
-    }
+    cout << "Drawing was saved to the file." << endl;
 }
+
 
 void Map::loadDrawing() const {
     ifstream fileIn(mapFile);
@@ -59,9 +55,10 @@ void Map::loadDrawing() const {
         int r, g, b;
         point loc;
         char junk;
+        vector<Splatter> splats;
 
         //Reads each part of the splatter in from a file, in this order: R; G; B; xLocation; yLocation
-        while (fileIn.peek() != EOF) {
+        while (fileIn && fileIn.peek() != EOF) {
             fileIn >> r;
             fileIn >> junk;
             fileIn >> b;
@@ -73,15 +70,19 @@ void Map::loadDrawing() const {
             fileIn >> loc.y;
 
             //Puts a splatter in the place where we said it would be, of that fill
-            drawing[loc.y][loc.x] = new Splatter(r, g, b, loc.x, loc.y);
+            Splatter tempSplat = Splatter(r, g, b, loc.x, loc.y);
+            splats.push_back(Splatter(r, g, b, loc.x, loc.y));
+
         }
+        //Set the drawing vector equal to the new one we just made
+        drawing = splats;
 
         cout << "File loaded into the drawings vector" << endl;
     }
 }
 
 void Map::clearDrawing() {
-    drawing.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
+    drawing.clear();
     cout << "Drawing cleared" << endl;
 }
 
@@ -90,17 +91,19 @@ bool Map::isBeneath(point p) {
 }
 
 void Map::drawArt() const{
-    glColor3f(1, 1, 1);
-    glBegin(GL_QUADS);
-    // top left corner
-    glVertex2i(0,0);
-    // bottom left corner
-    glVertex2i(position.x, position.y + height);
-    // bottom right corner
-    glVertex2i(position.x + width, position.y + height);
-    // top right corner
-    glVertex2i(position.x + width, position.y);
-    glEnd();
+    for (Splatter splat : drawing) {
+        glColor3f(1, 1, 1);
+        glBegin(GL_QUADS);
+        // top left corner
+        glVertex2i(splat.getX(), splat.getY());
+        // bottom left corner
+        glVertex2i(splat.getX(), splat.getY()+5);
+        // bottom right corner
+        glVertex2i(splat.getX()+5, splat.getY()+5);
+        // top right corner
+        glVertex2i(splat.getX()+5, splat.getY());
+        glEnd();
+    }
 }
 
 void Map::drawMap() const {
