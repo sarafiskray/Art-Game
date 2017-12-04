@@ -3,9 +3,13 @@
 //
 
 using namespace std;
+
 #include "Brush.h"
-#include <String>
+#include <string>
 #include <iostream>
+
+
+
 
 void Brush::togglePaint() {
     painting = !painting;
@@ -17,3 +21,5 @@ void Brush::togglePaint() {
 string Brush::getBrushName() {
     return brushName;
 }
+
+

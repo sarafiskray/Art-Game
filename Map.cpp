@@ -8,7 +8,7 @@ Map::Map() {
     //Makes platforms a 100x100, or NUMCOLUMNxNUMROW
     platforms.resize(NUMCOLUMN, vector<int>(NUMROW, 0));
     //Make drawing a 100x100
-    drawings.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
+    drawing.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
 
     //Make the bottom row full, at least
     for (int i = 0; i < NUMCOLUMN; i++ ) {
@@ -24,12 +24,12 @@ void Map::saveDrawing() const{
 
         for (int i = 0; i < NUMCOLUMN; i ++ ) {
             for (int ii = 0; ii < NUMROW; ii ++) {
-                if (drawings[i][ii] != nullptr) {
-                    fileIn << drawings[i][ii].fill.red;
+                if (drawing[i][ii] != nullptr) {
+                    fileIn << drawing[i][ii].fill.red;
                     fileIn << ";";
-                    fileIn << drawings[i][ii].fill.blue;
+                    fileIn << drawing[i][ii].fill.blue;
                     fileIn << ";";
-                    fileIn << drawings[i][ii].fill.green;
+                    fileIn << drawing[i][ii].fill.green;
                     fileIn << ";";
                     fileIn << i;
                     fileIn << ";";

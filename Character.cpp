@@ -12,7 +12,9 @@ Character::Character() {
     fill = {0, 0, 0};
     width = 2;
     height = 2;
-    brushes = {new DottedBrush, new NormalBrush};
+    NormalBrush norm;
+    DottedBrush dot;
+    brushes = {norm, dot};
     currentBrush = brushes[0];
     brushSelection = 0;
 
@@ -53,7 +55,7 @@ int Character::getVMomentum() const {
     return verticalMomentum;
 }
 
-Point Character::getLocation() const {
+point Character::getLocation() const {
     return location;
 }
 
@@ -82,7 +84,7 @@ void Character::setVMomentum(int x) {
     verticalMomentum = x;
 }
 
-void Character::setLocation(Point p) {
+void Character::setLocation(point p) {
     location = p;
 }
 

@@ -5,7 +5,7 @@
 #include <Brush.h>
 #include "DottedBrush.h"
 
-DottedBrush:DottedBrush() {
+DottedBrush::DottedBrush() {
 
 };
 

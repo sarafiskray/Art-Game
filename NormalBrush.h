@@ -15,7 +15,6 @@
 
 class NormalBrush : public Brush {
 private:
-    Color color;
     int size;
     
 public:
@@ -25,12 +24,12 @@ public:
     NormalBrush() {}
 
     //Setters
-    void setColor(Color colorIn) {}
+    void setColor(color colorIn) {}
 
     void setSize(int sizeIn) {}
 
     //Getters
-    Color getColor() const {}
+    color getColor() const {}
 
     int getSize() const {}
 

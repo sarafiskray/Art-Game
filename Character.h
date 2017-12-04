@@ -34,8 +34,8 @@ public:
     //constructors
     Character() {};
 
-    Character(location p);
-    Character(skin f, location p, Brush brush);
+    Character(struct point p);
+    Character(skin f, struct point p, Brush brush);
     Character(skin f, int xIn, int yIn);
 
     //Destructor
