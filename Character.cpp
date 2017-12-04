@@ -15,7 +15,7 @@ Character::Character() {
     DottedBrush dot;
     brushes.push_back(dot);
     brushes.push_back(norm);
-    currentBrush = brushes[0];
+    //currentBrush = brushes[0];
     brushSelection = 0;
 
     horizontalMomentum = 0;
@@ -41,7 +41,7 @@ Character::Character(point p) {
 Character::Character(skin f, point p, Brush brush){
     fill = f;
     location = p;
-    currentBrush = brush;
+    //currentBrush = brush;
 }
 
 
@@ -71,9 +71,9 @@ skin Character::getSkin() const {
     return fill;
 }
 
-Brush Character::getBrush() const {
-    return currentBrush;
-}
+//Brush Character::getBrush() const {
+//    return currentBrush;
+//}
 
 void Character::setHMomentum(int x) {
     horizontalMomentum = x;
@@ -123,13 +123,13 @@ void Character::be() {
     }
         //if there is nothing underneath the character, then it calls the fall function
     else {
-        if (!thisMap.isBeneath()) {
+        if (!thisMap.isBeneath(location)) {
             fall();
         }
     }
 
     //If the character is landed, it has no vertical momentum
-    if (thisMap.isBeneath()  {
+    if (thisMap.isBeneath(location))  {
         verticalMomentum = 0;
     }
 
@@ -137,7 +137,7 @@ void Character::be() {
     cout << "X: " << location.x << " Y: " << location.y << endl;
 
 }
-
+/*
 void Character::changeBrush() {
     if (brushSelection == brushes.size() - 1) {
         brushSelection = 0;
@@ -148,7 +148,7 @@ void Character::changeBrush() {
     }
 
     cout << "New Brush: " << currentBrush.getBrush << endl;
-}
+}*/
 
 void Character::moveLeft() {
     //So one doesn't go off the screen
@@ -174,7 +174,7 @@ void Character::moveRight() {
 
 void Character::jump() {
     //Only works if you have something to jump off of
-    if (thisMap.isBeneath()) {
+    if (thisMap.isBeneath(location)) {
         verticalMomentum += 4;
         location.y -= 4;
 

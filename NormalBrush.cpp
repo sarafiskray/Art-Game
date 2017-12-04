@@ -19,7 +19,7 @@ void NormalBrush::setSize(int sizeIn) {
 }
 
 //Getters
-Color NormalBrush::getColor() const {
+color NormalBrush::getColor() const {
     return color;
 }
 

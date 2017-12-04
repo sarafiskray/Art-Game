@@ -21,20 +21,20 @@ public:
 
     //Default constructor creates a white brush of medium size
     //Everyone will start with a normal brush
-    NormalBrush() {}
+    NormalBrush();
 
     //Setters
-    void setColor(color colorIn) {}
+    void setColor(color colorIn);
 
-    void setSize(int sizeIn) {}
+    void setSize(int sizeIn);
 
     //Getters
-    color getColor() const {}
+    color getColor() const;
 
-    int getSize() const {}
+    int getSize() const;
 
     //Methods
-    void changeColor(int colorChoice) {}
+    void changeColor();
 
 };
 

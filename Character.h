@@ -24,7 +24,7 @@ public:
     point location;
 
     //constructors
-    Character() {};
+    Character();
 
     Character(point p);
     Character(skin f, point p, Brush brush);
@@ -111,7 +111,7 @@ private:
     int speed;
     double width;
     double height;
-    Brush currentBrush;
+    //Brush currentBrush;
     vector<Brush> brushes;
 
     //Two Momentums for controlling how the character responds and keeps moving after the player is not still running
