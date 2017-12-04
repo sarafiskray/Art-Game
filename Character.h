@@ -5,7 +5,10 @@
 #ifndef THE_STATISTICS_CHARACTER_H
 #define THE_STATISTICS_CHARACTER_H
 
+#include "Brush.h"
 #include "Map.h"
+#include <vector>
+
 
 //Josh and Saraf the character will be a rectangle to make it
 //easier for collosion detection. Maybe we can draw a character
@@ -42,7 +45,7 @@ public:
     //getters
 
     //Returns struct Point with X and Y
-    Point getLocation() const;
+    point getLocation() const;
     //Returns x of location
     int getX() const;
     //Returns y of location

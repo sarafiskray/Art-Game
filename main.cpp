@@ -3,6 +3,8 @@
 //
 #include "Character.h"
 #include "Map.h"
+#include <iostream>
+
 
 using namespace std;
 
@@ -43,7 +45,7 @@ int main() {
     johnny.jump();
 
     johnny.be();
-    jonny.be();
+    johnny.be();
 
     //Other testing
     johnny.changeBrush();

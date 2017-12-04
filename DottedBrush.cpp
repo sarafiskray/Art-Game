@@ -2,10 +2,11 @@
 // Created by Joshua on 11/19/2017.
 //
 
+#include <Brush.h>
 #include "DottedBrush.h"
 
 DottedBrush:DottedBrush() {
-    brushName = "Dotted Brush";
+
 };
 
 int DottedBrush::getDottedSpeed() const {
