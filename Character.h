@@ -19,8 +19,6 @@
 //Skin really ought to be called fill, but we were thinking about character skins in video games while writing this
 //We are not racist
 
-#include "Headings.h"
-
 class Character {
 public:
     point location;
