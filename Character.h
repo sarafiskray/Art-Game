@@ -8,6 +8,7 @@
 #include "Brush.h"
 #include "Map.h"
 #include <vector>
+#include "graphics.h"
 
 
 //Josh and Saraf the character will be a rectangle to make it
@@ -110,6 +111,8 @@ public:
      * Effects: moves the character down based on momentum, until it hits the ground. Decreases verticalMomentum.
      */
     void fall();
+
+    void draw() const;
     
 
 private:
