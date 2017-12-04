@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "graphics.h"
+#include <memory>
 
 using namespace std;
 

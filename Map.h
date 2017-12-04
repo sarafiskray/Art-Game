@@ -7,6 +7,9 @@
 
 
 #include "Splatter.h"
+#include <vector>
+using namespace std;
+#include <string>
 
 class Map {
 
