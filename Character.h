@@ -8,7 +8,8 @@
 #include "Brush.h"
 #include "Map.h"
 #include <vector>
-
+#include "graphics.h"
+#include "Headings.h"
 
 
 //Josh and Saraf the character will be a rectangle to make it
@@ -17,26 +18,16 @@
 
 //Skin really ought to be called fill, but we were thinking about character skins in video games while writing this
 //We are not racist
-struct skin {
-    double red;
-    double green;
-    double blue;
-};
-
-struct point {
-    int x;
-    int y;
-};
 
 class Character {
 public:
     point location;
 
     //constructors
-    Character();
+    Character() {};
 
-    Character(struct point p);
-    Character(skin f, struct point p, Brush brush);
+    Character(point p);
+    Character(skin f, point p, Brush brush);
     Character(skin f, int xIn, int yIn);
 
     //Destructor
