@@ -2,9 +2,10 @@
 // Created by Joshua on 11/7/2017.
 //
 
-
-#include <String>
+#include <iostream>
+#include <string>
 #include "Splatter.h"
+using namespace std;
 
 #ifndef THE_STATISTICS_BRUSH_H
 #define THE_STATISTICS_BRUSH_H
@@ -41,7 +42,7 @@ public:
      * Effects: Changes this splatter to a splatter of the selected color
      * Pure virtual because some brushes don't have just one color
      */
-    pure virtual void changeColor = 0;
+    virtual void changeColor() = 0;
 
 };
 

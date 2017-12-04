@@ -5,10 +5,10 @@
 #ifndef THE_STATISTICS_CHARACTER_H
 #define THE_STATISTICS_CHARACTER_H
 
-#include "Map.h"
 #include "Brush.h"
+#include "Map.h"
 #include <vector>
-#include <point>
+
 
 //Josh and Saraf the character will be a rectangle to make it
 //easier for collosion detection. Maybe we can draw a character
@@ -34,8 +34,8 @@ public:
     //constructors
     Character() {};
 
-    Character(point p);
-    Character(skin f, point p, Brush brush);
+    Character(location p);
+    Character(skin f, location p, Brush brush);
     Character(skin f, int xIn, int yIn);
 
     //Destructor

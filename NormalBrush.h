@@ -11,6 +11,8 @@
 #ifndef THE_STATISTICS_NORMALBRUSH_H
 #define THE_STATISTICS_NORMALBRUSH_H
 
+#include "Brush.h"
+
 class NormalBrush : public Brush {
 private:
     Color color;
