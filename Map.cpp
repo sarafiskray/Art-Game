@@ -3,7 +3,7 @@
 //
 
 #include "Map.h"
-#include "Splatter.h"
+
 #include <iostream>
 
 
@@ -20,7 +20,8 @@ Map::Map() {
     }
 }
 
-void Map::saveDrawing() const{
+//loading, saving, clearing functions. commented out for now bc throwing errors
+/*void Map::saveDrawing() const{
     ofstream fileIn(mapFile);
 
     if (fileIn) {
@@ -80,12 +81,13 @@ void Map::loadDrawing() const {
 void Map::clearDrawing() {
     drawing.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
     cout << "Drawing cleared" << endl;
-}
+}*/
 
 bool Map::isBeneath(point p) {
     return (platforms[p.x][p.y] == 1);
 }
 
+/*
 void Map::drawArt() const{
     glColor3f(1, 1, 1);
     glBegin(GL_QUADS);
@@ -98,4 +100,4 @@ void Map::drawArt() const{
     // top right corner
     glVertex2i(position.x + width, position.y);
     glEnd();
-}
+}*/

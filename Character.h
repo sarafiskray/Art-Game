@@ -8,7 +8,7 @@
 #include "Brush.h"
 #include "Map.h"
 #include <vector>
-#include "graphics.h"
+
 
 
 //Josh and Saraf the character will be a rectangle to make it
@@ -33,7 +33,7 @@ public:
     point location;
 
     //constructors
-    Character() {};
+    Character();
 
     Character(struct point p);
     Character(skin f, struct point p, Brush brush);

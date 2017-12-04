@@ -3,11 +3,7 @@
 //
 
 #include "Brush.h"
-#include "Character.h"
 #include "graphics.h"
-#include "DottedBrush.h"
-#include "Map.h"
-#include "Splatter.h"
 
 #include <iostream>
 
@@ -18,6 +14,8 @@
 using namespace std;
 
 int main(int argc, char** argv) {
+
+    graphicsPlay(argc, argv);
 /*
     //Some arbitrary testing data
     point p = {30, 30};
@@ -97,7 +95,6 @@ int main(int argc, char** argv) {
 
     cout << "is there something beneath (5, 99)? : " >> johnny.thisMap.isBeneath({5, 99});
 */
-    graphicsPlay(argc, argv);
 
     return 0;
 }

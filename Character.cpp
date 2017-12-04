@@ -3,7 +3,6 @@
 //
 
 #include "Character.h"
-#include "Brush.h"
 #include "NormalBrush.h"
 #include "DottedBrush.h"
 
@@ -14,7 +13,8 @@ Character::Character() {
     height = 2;
     NormalBrush norm;
     DottedBrush dot;
-    brushes = {norm, dot};
+    brushes.push_back(dot);
+    brushes.push_back(norm);
     currentBrush = brushes[0];
     brushSelection = 0;
 
@@ -24,12 +24,11 @@ Character::Character() {
     location.x = 60;
     location.y = 60;
 
-    thisMap = new Map();
+    //thisMap = new Map();
 };
 
 Character::Character(skin f, int xIn, int yIn) {
-    Character();
-
+    //Character();
     fill = f;
     location.x = xIn;
     location.y = yIn;
@@ -68,8 +67,8 @@ int Character::getY() const {
 }
 
 //To be implemented with graphics: character RGB
-color Character::getSkin() const {
-    return skin;
+skin Character::getSkin() const {
+    return fill;
 }
 
 Brush Character::getBrush() const {
@@ -94,7 +93,7 @@ void Character::setLocation(int xIn, int yIn) {
 }
 
 void Character::setSkin(skin f) {
-    skin = f;
+    fill = f;
 }
 
 void Character::setSkin(double r, double g, double b) {

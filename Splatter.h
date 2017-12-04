@@ -7,7 +7,9 @@
 #ifndef THE_STATISTICS_SPLATTER_H
 #define THE_STATISTICS_SPLATTER_H
 
+
 #include "Character.h"
+
 
 class Splatter {
 

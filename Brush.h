@@ -25,10 +25,11 @@ color red = {1, 0, 0};
 color green = {0, 1, 0};
 color blue = {0, 0, 1};
 
+
 class Brush {
 
 
-private:
+protected:
     //Size multiplier for the brush splatters. To be implemented with graphics
     int size;
     //Whether or not the brush is currently painting
@@ -37,10 +38,11 @@ private:
     Splatter thisSplatter;
     //Name for brush
     string brushName;
-    //current color
-    color currentColor = colorPalette[0];
     //all accessible colors
     vector<color> colorPalette = {black, red, green, blue};
+    //current color
+    color currentColor = colorPalette[0];
+
 
 public:
     string getBrushName();
