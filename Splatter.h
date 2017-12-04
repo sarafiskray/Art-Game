@@ -3,11 +3,7 @@
 // Will be much further implemented with Graphics
 //
 
-struct skin {
-    double red;
-    double green;
-    double blue;
-};
+#include "Character.h"
 
 #ifndef THE_STATISTICS_SPLATTER_H
 #define THE_STATISTICS_SPLATTER_H

@@ -1,8 +1,10 @@
 //
 // Created by Saraf Ray on 11/16/17.
 //
+#include <iostream>
 #include "Character.h"
 #include "Map.h"
+#include "DottedBrush.h"
 
 using namespace std;
 
@@ -43,7 +45,7 @@ int main() {
     johnny.jump();
 
     johnny.be();
-    jonny.be();
+    johnny.be();
 
     //Other testing
     johnny.changeBrush();

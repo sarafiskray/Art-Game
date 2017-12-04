@@ -2,7 +2,9 @@
 // Created by Joshua on 11/7/2017.
 //
 
-#include <Color>;
+
+#include <String>
+#include "Splatter.h"
 
 #ifndef THE_STATISTICS_BRUSH_H
 #define THE_STATISTICS_BRUSH_H
