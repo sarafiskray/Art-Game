@@ -11,6 +11,6 @@ void Brush::togglePaint() {
     cout << "Painting is now " << descriptor << endl;
 }
 
-string Brush::getBrush() {
+string Brush::getBrushName() {
     return brushName;
 }

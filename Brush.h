@@ -23,7 +23,7 @@ private:
     string brushName;
 
 public:
-    string getBrush;
+    string getBrushName();
     //No setBrush, brush is set by changeBrush
 
     /*

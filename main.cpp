@@ -4,6 +4,8 @@
 #include "Character.h"
 #include "Map.h"
 #include <iostream>
+#include "Brush.h"
+#include "DottedBrush.h"
 
 
 using namespace std;
@@ -17,12 +19,12 @@ int main() {
 
     Character johnny;
     Character jackie(p);
-    Character jimmy(f, p, new DottedBrush);
+    Character jimmy(f, p, dot);
     Character jenny(f, 15, 15);
 
     //Test Constructors
     cout << "Jackie location: " << jackie.getX() << "," << jackie.getY() << endl;
-    cout << "Jimmy brush: " << jimmy.getBrush().getName() << endl;
+    cout << "Jimmy brush: " << jimmy.getBrush().getBrushName() << endl;
 
     //Called with the left button in graphics or with A
     //Be is used on every refresh, and includes the fall() function, so will not fall until we call that
