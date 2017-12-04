@@ -5,19 +5,22 @@
 #include "Map.h"
 #include "Splatter.h"
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <memory>
 
+using namespace std;
 
 
 Map::Map() {
     //Makes platforms a 100x100, or NUMCOLUMNxNUMROW
     platforms.resize(NUMCOLUMN, vector<int>(NUMROW, 0));
-    //Make drawing a 100x100
-    drawing.resize(NUMCOLUMN, vector<Splatter>(NUMROW, nullptr));
 
     //Make the bottom row full, at least
     for (int i = 0; i < NUMCOLUMN; i++ ) {
-        platforms[i][NUMROW - 1] = 1;
+        platforms[i][NUMROW-5] = 1;
     }
+
 }
 
 void Map::saveDrawing() const{
@@ -28,7 +31,7 @@ void Map::saveDrawing() const{
 
         for (int i = 0; i < NUMCOLUMN; i ++ ) {
             for (int ii = 0; ii < NUMROW; ii ++) {
-                if (drawing[i][ii] != nullptr) {
+                if (drawing[i][ii].g ) {
                     fileIn << drawing[i][ii].getFill().red;
                     fileIn << ";";
                     fileIn << drawing[i][ii].getFill().blue;
@@ -98,4 +101,24 @@ void Map::drawArt() const{
     // top right corner
     glVertex2i(position.x + width, position.y);
     glEnd();
+}
+
+void Map::drawMap() const {
+    for (int x = 0; x < NUMCOLUMN; x++) {
+        for (int y = 0; y < NUMROW; y++) {
+            if (platforms[x][y] == 1) {
+                glColor3f(.52, .12, .15);
+                glBegin(GL_QUADS);
+                // top left corner
+                glVertex2i(x, y);
+                // bottom left corner
+                glVertex2i(x, y+5);
+                // bottom right corner
+                glVertex2i(x+1, y+5);
+                // top right corner
+                glVertex2i(x+1, y);
+                glEnd();
+            }
+        }
+    }
 }
