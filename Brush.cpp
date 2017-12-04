@@ -22,4 +22,6 @@ string Brush::getBrushName() {
     return brushName;
 }
 
-
+void Brush::changeColor() {
+    //needs definiton
+}

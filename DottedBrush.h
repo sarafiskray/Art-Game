@@ -13,9 +13,11 @@ private:
     int dottedSpeed;
 
 public:
-    DottedBrush();
     int getDottedSpeed() const;
     void setDottedSpeed(int speedIn);
+    void changeColor();
+    DottedBrush();
+    DottedBrush(int ds);
 
 };
 

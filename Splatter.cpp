@@ -25,3 +25,17 @@ void Splatter::draw() const {
     glVertex2i(location.x + width, location.y);
     glEnd();
 }
+
+Splatter::Splatter() {
+}
+
+Splatter::Splatter(int r, int g, int b, int xLoc, int yLoc) {
+    Splatter(int r, int g, int b, int xLoc, int yLoc) {
+        fill.red = r;
+        fill.green = g;
+        fill.blue = b;
+        location.x = xLoc;
+        location.y = yLoc;
+    }
+
+}

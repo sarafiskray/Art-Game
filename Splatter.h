@@ -8,7 +8,7 @@
 #define THE_STATISTICS_SPLATTER_H
 
 
-#include "Character.h"
+#include "Headings.h"
 
 
 class Splatter {
@@ -21,14 +21,8 @@ private:
 
 
 public:
-    Splatter(int r, int g, int b, int xLoc, int yLoc) {
-        fill.red = r;
-        fill.green = g;
-        fill.blue = b;
-        location.x = xLoc;
-        location.y = yLoc;
-    }
-
+    Splatter();
+    Splatter(int r, int g, int b, int xLoc, int yLoc);
     void setFill(skin fillIn);
 
     skin getFill() const;
