@@ -4,11 +4,11 @@
 
 #include "Splatter.h"
 
-skin Splatter::getFill() const {
+color Splatter::getFill() const {
     return fill;
 }
 
-void Splatter::setFill(skin fillIn) {
+void Splatter::setFill(color fillIn) {
     fill = fillIn;
 }
 

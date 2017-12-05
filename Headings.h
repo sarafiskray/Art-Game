@@ -5,7 +5,7 @@
 #ifndef THE_STATISTICS_HEADINGS_H
 #define THE_STATISTICS_HEADINGS_H
 
-struct skin {
+struct color {
     double red;
     double green;
     double blue;

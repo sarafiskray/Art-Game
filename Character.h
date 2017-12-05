@@ -16,7 +16,7 @@
 //easier for collosion detection. Maybe we can draw a character
 //inside rectangle to have it look like a person
 
-//Skin really ought to be called fill, but we were thinking about character skins in video games while writing this
+//color really ought to be called fill, but we were thinking about character colors in video games while writing this
 //We are not racist
 
 class Character {
@@ -27,8 +27,8 @@ public:
     Character();
 
     Character(point p);
-    Character(skin f, point p);
-    Character(skin f, int xIn, int yIn);
+    Character(color f, point p);
+    Character(color f, int xIn, int yIn);
 
     //Destructor
     ~Character();
@@ -43,15 +43,15 @@ public:
     //Returns y of location
     int getY() const;
     //gets color of character
-    skin getSkin() const;
+    color getcolor() const;
     int getHMomentum() const;
     int getVMomentum() const;
-    Brush getBrush() const;
+    Brush& getBrush() const;
 
     //setters
     //No setBrush because that is where we use changeBrush
-    void setSkin(skin f);
-    void setSkin(double r, double g, double b);
+    void setcolor(color f);
+    void setcolor(double r, double g, double b);
     void setLocation(point p);
     void setLocation(int xIn, int yIn);
     void setHMomentum(int x);
@@ -107,7 +107,7 @@ public:
     
 
 private:
-    skin fill;
+    color fill;
     int speed;
     double width;
     double height;

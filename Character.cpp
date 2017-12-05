@@ -27,7 +27,7 @@ Character::Character() {
     //thisMap = new Map();
 };
 
-Character::Character(skin f, int xIn, int yIn) {
+Character::Character(color f, int xIn, int yIn) {
     //Character();
     fill = f;
     location.x = xIn;
@@ -38,13 +38,10 @@ Character::Character(point p) {
     location = p;
 }
 
-Character::Character(skin f, point p){
+Character::Character(color f, point p){
     fill = f;
     location = p;
-    //currentBrush = brush;
 }
-
-
 
 int Character::getHMomentum() const {
     return horizontalMomentum;
@@ -67,13 +64,13 @@ int Character::getY() const {
 }
 
 //To be implemented with graphics: character RGB
-skin Character::getSkin() const {
+color Character::getcolor() const {
     return fill;
 }
 
-//Brush Character::getBrush() const {
-//    return currentBrush;
-//}
+Brush& Character::getBrush() const {
+    return brushes[brushSelection];
+}
 
 void Character::setHMomentum(int x) {
     horizontalMomentum = x;
@@ -92,11 +89,11 @@ void Character::setLocation(int xIn, int yIn) {
     location.y = yIn;
 }
 
-void Character::setSkin(skin f) {
+void Character::setcolor(color f) {
     fill = f;
 }
 
-void Character::setSkin(double r, double g, double b) {
+void Character::setcolor(double r, double g, double b) {
     fill.red = r;
     fill.blue = b;
     fill.green = g;
