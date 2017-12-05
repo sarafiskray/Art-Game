@@ -24,13 +24,12 @@ private:
 public:
     Splatter();
     Splatter(int r, int g, int b, int xLoc, int yLoc);
+
     void setFill(color fillIn);
-
-    color getFill() const;
-
     void setX(int xIn);
     void setY(int yIn);
 
+    color getFill() const;
     int getX() const;
     int getY() const;
 

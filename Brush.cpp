@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-void Brush::togglePaint() {
+virtual void Brush::togglePaint() {
     painting = !painting;
     string descriptor;
     painting ? descriptor = "on" : descriptor = "off";
