@@ -38,7 +38,7 @@ Character::Character(point p) {
     location = p;
 }
 
-Character::Character(skin f, point p, Brush brush){
+Character::Character(skin f, point p){
     fill = f;
     location = p;
     //currentBrush = brush;

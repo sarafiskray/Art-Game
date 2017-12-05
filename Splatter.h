@@ -9,6 +9,7 @@
 
 
 #include "Headings.h"
+#include "graphics.h"
 
 
 class Splatter {

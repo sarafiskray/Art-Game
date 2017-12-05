@@ -27,7 +27,7 @@ public:
     Character();
 
     Character(point p);
-    Character(skin f, point p, Brush brush);
+    Character(skin f, point p);
     Character(skin f, int xIn, int yIn);
 
     //Destructor
