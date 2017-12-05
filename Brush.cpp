@@ -23,5 +23,5 @@ string Brush::getBrushName() {
 }
 
 void Brush::changeColor() {
-    //needs definiton
+    currentColorIndex++;
 }
