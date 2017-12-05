@@ -33,7 +33,7 @@ public:
     int getX() const;
     int getY() const;
 
-    void draw() const;
+    void drawSplatter() const;
 };
 
 #endif //THE_STATISTICS_SPLATTER_H

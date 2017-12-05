@@ -27,7 +27,7 @@ void Splatter::setY(int yIn) {
     location.y = yIn;
 }
 
-void Splatter::draw() const {
+void Splatter::drawSplatter() const {
     glColor3f(fill.red, fill.green, fill.blue);
     glBegin(GL_QUADS);
     // top left corner

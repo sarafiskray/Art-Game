@@ -47,11 +47,19 @@ public:
     /*
      * changeColor
      * Requires: Nothing
-     * Modifies: thisSplatter, currentColorIndex
-     * Effects: Changes this splatter to a splatter of the selected color
+     * Modifies: currentColorIndex
+     * Effects: Changes the selected color to the next one in the colorPalette
      * virtual because some future brushes might not have just one color
      */
     virtual void changeColor();
+
+    /*
+     * draw
+     * Requires: point location, location for splatter to go
+     * Modifies: thisSplatter
+     * Effects: changes thisSplatter to something dependent on current location
+     */
+    void draw(point location);
 
 };
 

@@ -24,4 +24,13 @@ string Brush::getBrushName() {
 
 void Brush::changeColor() {
     currentColorIndex++;
+
+}
+
+void Brush::draw(point location) {
+    //If painting is toggled on, start placing splatters of the current color and current location. Location will modify frequently
+    if(painting) {
+        thisSplatter = Splatter(colorPalette[currentColorIndex].red, colorPalette[currentColorIndex].blue, colorPalette[currentColorIndex].green, location.x, location.y);
+        thisSplatter.drawSplatter();
+    }
 }
