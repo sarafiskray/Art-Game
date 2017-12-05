@@ -15,7 +15,7 @@
 class Splatter {
 
 private:
-    skin fill;
+    color fill;
     int width = 10;
     int height = 10;
     point location;
@@ -24,9 +24,9 @@ private:
 public:
     Splatter();
     Splatter(int r, int g, int b, int xLoc, int yLoc);
-    void setFill(skin fillIn);
+    void setFill(color fillIn);
 
-    skin getFill() const;
+    color getFill() const;
 
     void setX(int xIn);
     void setY(int yIn);
