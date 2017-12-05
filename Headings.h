@@ -16,6 +16,6 @@ struct point {
     int y;
 };
 
-#endif THE_STATISTICS_HEADINGS_H
+#endif
 
 
