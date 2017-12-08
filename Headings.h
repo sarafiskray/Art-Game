@@ -19,7 +19,7 @@ struct color {
     double blue;
 };
 
-extern color indigoX, blueX, cyanX, greenX, yellowX, goldX, orangeX, pinkX, redX, maroonX, brownX, grayX, blackX;
+extern color indigoX, blueX, cyanX, greenX, yellowX, goldX, orangeX, pinkX, redX, maroonX, brownX, grayX, blackX, whiteX;
 
 extern vector<color> colorPalette;
 #endif
