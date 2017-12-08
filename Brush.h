@@ -11,20 +11,9 @@
 #include <string>
 
 #include "Splatter.h"
+#include "Map.h"
 
 using namespace std;
-
-struct color {
-    double red;
-    double green;
-    double blue;
-};
-
-color black = {0, 0, 0};
-color red = {1, 0, 0};
-color green = {0, 1, 0};
-color blue = {0, 0, 1};
-
 
 class Brush {
 
@@ -38,13 +27,19 @@ protected:
     Splatter thisSplatter;
     //Name for brush
     string brushName;
-    //all accessible colors
-    vector<color> colorPalette = {black, red, green, blue};
     //current color
     color currentColor = colorPalette[0];
+    int currentColorIndex;
+    Map thisMap;
 
 
 public:
+    bool getPainting() const;
+
+    color getColor() const;
+    color getPrevColor() const;
+    color getNextColor() const;
+
     string getBrushName();
     //No setBrush, brush is set by changeBrush
 
@@ -53,17 +48,28 @@ public:
      * Required: Nothing
      * Modifies: bool painting
      * Effects: toggles the draw functions for splatters on and off
+     * In normal brush, is consistent. Dotted brush is intermittent
      */
-    void togglePaint();
+    virtual void togglePaint();
 
     /*
      * changeColor
      * Requires: Nothing
-     * Modifies: thisSplatter
-     * Effects: Changes this splatter to a splatter of the selected color
-     * Pure virtual because some brushes don't have just one color
+     * Modifies: currentColorIndex
+     * Effects: Changes the selected color to the next one in the colorPalette
+     * virtual because some future brushes might not have just one color
      */
-    virtual void changeColor() = 0;
+    virtual void changeColor(int choice);
+
+    /*
+     * draw
+     * Requires: point location, location for splatter to go
+     * Modifies: thisSplatter
+     * Effects: changes thisSplatter to something dependent on current location
+     */
+    void draw(point location);
+
+    void changeSize(int choice);
 
 };
 

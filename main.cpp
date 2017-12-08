@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
     //Some arbitrary testing data
     point p = {30, 30};
     //I wanna say this is gray?
-    skin f = {.2, .2, .2};
+    color f = {.2, .2, .2};
 
 
     Character johnny;
@@ -63,11 +63,11 @@ int main(int argc, char** argv) {
     johnny.jump();
 
     //Test Fill
-    skin s = {.5, .5, .5};
-    johnny.setSkin(s);
-    cout << "Char color: R:" <<johnny.getSkin().red << " G:" << johnny.getSkin().green << " B:" << johnny.getSkin() << endl;
-    johnny.setSkin(.1, .1, .1);
-    cout << "Char color: R:" <<johnny.getSkin().red << " G:" << johnny.getSkin().green << " B:" << johnny.getSkin() << endl;
+    color s = {.5, .5, .5};
+    johnny.setcolor(s);
+    cout << "Char color: R:" <<johnny.getcolor().red << " G:" << johnny.getcolor().green << " B:" << johnny.getcolor() << endl;
+    johnny.setcolor(.1, .1, .1);
+    cout << "Char color: R:" <<johnny.getcolor().red << " G:" << johnny.getcolor().green << " B:" << johnny.getcolor() << endl;
 
     //Test location
     johnny.setLocation(p);

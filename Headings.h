@@ -5,17 +5,23 @@
 #ifndef THE_STATISTICS_HEADINGS_H
 #define THE_STATISTICS_HEADINGS_H
 
-struct skin {
-    double red;
-    double green;
-    double blue;
-};
+using namespace std;
+#include <vector>
 
 struct point {
     int x;
     int y;
 };
 
+struct color {
+    double red;
+    double green;
+    double blue;
+};
+
+extern color indigoX, blueX, cyanX, greenX, yellowX, goldX, orangeX, pinkX, redX, maroonX, brownX, grayX, blackX, whiteX;
+
+extern vector<color> colorPalette;
 #endif
 
 

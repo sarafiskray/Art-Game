@@ -33,9 +33,6 @@ public:
 
     int getSize() const;
 
-    //Methods
-    void changeColor();
-
 };
 
 #endif //THE_STATISTICS_NORMALBRUSH_H

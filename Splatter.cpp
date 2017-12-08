@@ -4,11 +4,11 @@
 
 #include "Splatter.h"
 
-skin Splatter::getFill() const {
+color Splatter::getFill() const {
     return fill;
 }
 
-void Splatter::setFill(skin fillIn) {
+void Splatter::setFill(color fillIn) {
     fill = fillIn;
 }
 
@@ -27,7 +27,11 @@ void Splatter::setY(int yIn) {
     location.y = yIn;
 }
 
-void Splatter::draw() const {
+int Splatter::getSize() const {
+    return height;
+}
+
+void Splatter::drawSplatter() const {
     glColor3f(fill.red, fill.green, fill.blue);
     glBegin(GL_QUADS);
     // top left corner
@@ -41,16 +45,21 @@ void Splatter::draw() const {
     glEnd();
 }
 
-Splatter::Splatter() {
+Splatter::Splatter() {}
+
+Splatter::Splatter(color colorIn, point locationIn, int sizeIn) {
+    fill = colorIn;
+    location = locationIn;
+    height = sizeIn;
+    width = sizeIn;
 }
 
-Splatter::Splatter(int r, int g, int b, int xLoc, int yLoc) {
-    Splatter(int r, int g, int b, int xLoc, int yLoc) {
-        fill.red = r;
-        fill.green = g;
-        fill.blue = b;
-        location.x = xLoc;
-        location.y = yLoc;
-    }
-
+Splatter::Splatter(int r, int g, int b, int xLoc, int yLoc, int sizeIn) {
+    fill.red = r;
+    fill.green = g;
+    fill.blue = b;
+    location.x = xLoc;
+    location.y = yLoc;
+    height = sizeIn;
+    width = sizeIn;
 }

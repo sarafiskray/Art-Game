@@ -27,7 +27,7 @@ Character::Character() {
     //thisMap = new Map();
 };
 
-Character::Character(skin f, int xIn, int yIn) {
+Character::Character(color f, int xIn, int yIn) {
     //Character();
     fill = f;
     location.x = xIn;
@@ -38,13 +38,10 @@ Character::Character(point p) {
     location = p;
 }
 
-Character::Character(skin f, point p, Brush brush){
+Character::Character(color f, point p){
     fill = f;
     location = p;
-    //currentBrush = brush;
 }
-
-
 
 int Character::getHMomentum() const {
     return horizontalMomentum;
@@ -67,13 +64,9 @@ int Character::getY() const {
 }
 
 //To be implemented with graphics: character RGB
-skin Character::getSkin() const {
+color Character::getcolor() const {
     return fill;
 }
-
-//Brush Character::getBrush() const {
-//    return currentBrush;
-//}
 
 void Character::setHMomentum(int x) {
     horizontalMomentum = x;
@@ -92,11 +85,11 @@ void Character::setLocation(int xIn, int yIn) {
     location.y = yIn;
 }
 
-void Character::setSkin(skin f) {
+void Character::setcolor(color f) {
     fill = f;
 }
 
-void Character::setSkin(double r, double g, double b) {
+void Character::setcolor(double r, double g, double b) {
     fill.red = r;
     fill.blue = b;
     fill.green = g;
@@ -137,23 +130,36 @@ void Character::be() {
     cout << "X: " << location.x << " Y: " << location.y << endl;
 
 }
-/*
-void Character::changeBrush() {
-    if (brushSelection == brushes.size() - 1) {
-        brushSelection = 0;
-        currentBrush = brushes[0];
+
+void Character::changeBrush(int choice) {
+    if (choice == 0) {
+        if (brushSelection == brushes.size() - 1) {
+            brushSelection = 0;
+        }
+        else {
+            ++brushSelection;
+        }
     }
     else {
-        currentBrush = brushes[++brushSelection];
+        if (brushSelection == 0) {
+            brushSelection = brushes.size() - 1;
+        }
+        else {
+            brushSelection--;
+        }
     }
 
-    cout << "New Brush: " << currentBrush.getBrush << endl;
-}*/
+    cout << "New Brush: " << brushes[brushSelection].getBrushName() << endl;
+}
+
+Brush Character::getBrush() const {
+    return brushes[brushSelection];
+}
 
 void Character::moveLeft() {
     //So one doesn't go off the screen
-    if (!location.x == 0) {
-        location.x -= (horizontalMomentum * 3) + 2;
+    if (!(location.x == 0) && thisMap.isBeneath(location)) {
+        location.x -= (horizontalMomentum) + 2;
         horizontalMomentum--;
     }
 
@@ -163,8 +169,8 @@ void Character::moveLeft() {
 
 void Character::moveRight() {
     //So one doesn't go off the screen
-    if (!location.x == 100) {
-        location.x += (horizontalMomentum * 3) + 2;
+    if (!(location.x == 500) && thisMap.isBeneath(location)) {
+        location.x += (horizontalMomentum) + 2;
         horizontalMomentum++;
     }
 

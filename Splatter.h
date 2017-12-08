@@ -9,12 +9,13 @@
 
 
 #include "Headings.h"
+#include "graphics.h"
 
 
 class Splatter {
 
 private:
-    skin fill;
+    color fill;
     int width = 10;
     int height = 10;
     point location;
@@ -22,18 +23,19 @@ private:
 
 public:
     Splatter();
-    Splatter(int r, int g, int b, int xLoc, int yLoc);
-    void setFill(skin fillIn);
+    Splatter(color colorIn, point locationIn, int sizeIn);
+    Splatter(int r, int g, int b, int xLoc, int yLoc, int sizeIn);
 
-    skin getFill() const;
-
+    void setFill(color fillIn);
     void setX(int xIn);
     void setY(int yIn);
 
+    int getSize() const;
+    color getFill() const;
     int getX() const;
     int getY() const;
 
-    void draw() const;
+    void drawSplatter() const;
 };
 
 #endif //THE_STATISTICS_SPLATTER_H
