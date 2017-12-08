@@ -23,7 +23,8 @@ private:
 
 public:
     Splatter();
-    Splatter(int r, int g, int b, int xLoc, int yLoc);
+    Splatter(color colorIn, point locationIn, int sizeIn);
+    Splatter(int r, int g, int b, int xLoc, int yLoc, int sizeIn);
 
     void setFill(color fillIn);
     void setX(int xIn);

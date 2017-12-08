@@ -131,12 +131,22 @@ void Character::be() {
 
 }
 
-void Character::changeBrush() {
-    if (brushSelection == brushes.size() - 1) {
-        brushSelection = 0;
+void Character::changeBrush(int choice) {
+    if (choice == 0) {
+        if (brushSelection == brushes.size() - 1) {
+            brushSelection = 0;
+        }
+        else {
+            ++brushSelection;
+        }
     }
     else {
-        ++brushSelection;
+        if (brushSelection == 0) {
+            brushSelection = brushes.size() - 1;
+        }
+        else {
+            brushSelection--;
+        }
     }
 
     cout << "New Brush: " << brushes[brushSelection].getBrushName() << endl;

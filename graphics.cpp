@@ -109,6 +109,10 @@ void display_game() {
     nextColorDisplay.set_fill(saraf.getBrush().getNextColor());
     nextColorDisplay.draw();
     draw_text("D", 1, 1, 1, 119, 23);
+    draw_text("W", 0, 0, 0, 96, 40);
+    //Change 120 if the alignment is off
+    draw_text("S", 0, 0, 0, 120, 40);
+    draw_text(saraf.getBrush().getBrushName(), 0, 0, 0, 100, 40);
 
 
     string message = "press p for legend";
@@ -116,15 +120,20 @@ void display_game() {
     if (displayLegend) {
         legend.set_position(400, 20);
         legend.set_dimensions(80, 100);
-        legend.set_fill(blackX)
+        legend.set_fill(blackX);
         legend.draw();
 
         int yLoc = 30;
         for (string text : legendTexts) {
             draw_text(text, 1, 1, 1, 410, yLoc += 20);
         }
-
     }
+
+    //If painting is toggled on, paint away!
+    if (saraf.getBrush().getPainting()) {
+        saraf.getBrush().draw(saraf.getLocation());
+    }
+
 
 
 
@@ -170,9 +179,30 @@ void kbd(unsigned char key, int x, int y)
         exit(0);
     }
 
-    //Holding down the p button to get the legend
+    //Press the p button to toggle the legend
     if (screen == game && key == 112) {
         displayLegend = !displayLegend;
+    }
+
+    //press w to change brush upwards
+    if (screen == game && key == 119){
+        saraf.changeBrush(0);
+    }
+    //press s to change brush downward
+    if (screen == game && key == 115) {
+        saraf.changeBrush(1);
+    }
+    //press a for previous color
+    if (screen == game && key == 97) {
+        saraf.getBrush().changeColor(1);
+    }
+    //press d for next color
+    if (screen == game && key == 100) {
+        saraf.getBrush().changeColor(0);
+    }
+    //press space to toggle painting
+    if (screen == game && key == 32) {
+        saraf.getBrush().togglePaint();
     }
 
     glutPostRedisplay();

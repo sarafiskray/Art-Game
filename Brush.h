@@ -32,9 +32,11 @@ protected:
 
 
 public:
+    bool getPainting() const;
+
     color getColor() const;
     color getPrevColor() const;
-    color getNextColor() const
+    color getNextColor() const;
 
     string getBrushName();
     //No setBrush, brush is set by changeBrush
@@ -55,7 +57,7 @@ public:
      * Effects: Changes the selected color to the next one in the colorPalette
      * virtual because some future brushes might not have just one color
      */
-    virtual void changeColor();
+    virtual void changeColor(int choice);
 
     /*
      * draw
@@ -64,6 +66,8 @@ public:
      * Effects: changes thisSplatter to something dependent on current location
      */
     void draw(point location);
+
+    void changeSize(int choice);
 
 };
 

@@ -41,13 +41,21 @@ void Splatter::drawSplatter() const {
     glEnd();
 }
 
-Splatter::Splatter() {
+Splatter::Splatter() {}
+
+Splatter::Splatter(color colorIn, point locationIn, int sizeIn) {
+    fill = colorIn;
+    location = locationIn;
+    height = sizeIn;
+    width = sizeIn;
 }
 
-Splatter::Splatter(int r, int g, int b, int xLoc, int yLoc) {
-        fill.red = r;
-        fill.green = g;
-        fill.blue = b;
-        location.x = xLoc;
-        location.y = yLoc;
+Splatter::Splatter(int r, int g, int b, int xLoc, int yLoc, int sizeIn) {
+    fill.red = r;
+    fill.green = g;
+    fill.blue = b;
+    location.x = xLoc;
+    location.y = yLoc;
+    height = sizeIn;
+    width = sizeIn;
 }

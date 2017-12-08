@@ -73,7 +73,7 @@ public:
      * Modifies: currentBrush, brushSelection
      * Effects: currentBrush changes to the next in the vector. brushSelection iterates up, or back to 0 if it reaches brushes.size()
      */
-    void changeBrush();
+    void changeBrush(int choice);
     /*
      * moveLeft
      * Requires: Nothing
