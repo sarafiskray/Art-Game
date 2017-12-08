@@ -27,14 +27,14 @@ string legendHeader = "L E G E N D";
 string legend2 = "Arrow keys to move";
 string legend3 = "Press O to save the your drawing";
 string legend4 = "Press I to load your last drawing";
-string legend5 = "Press U to claer your drawing";
+string legend5 = "Press U to clear your drawing";
 string legend6 = "Press A or D to cycle through brush colors";
 string legend7 = "Press W or S to cycle through your brushes";
-vector<string> legendTexts = {legendHeader, legend2, legend3, legend4, legend5, legend6, legend7};
+string legend8 = "Press SPACE to toggle drawing";
+vector<string> legendTexts = {legendHeader, legend2, legend3, legend4, legend5, legend6, legend7, legend8};
 
 color currentColor = saraf.getBrush().getColor();
 Rectangle currentColorDisplay, prevColorDisplay, nextColorDisplay;
-
 
 
 
@@ -98,6 +98,9 @@ void draw_text(string text, int r, int g, int b, int x, int y) {
 }
 
 void display_game() {
+    //This updates the map, in case we load a new save or clear everything
+    thisMap.drawMap();
+
     saraf.draw();
 
     currentColorDisplay.set_fill(currentColor);
@@ -204,6 +207,19 @@ void kbd(unsigned char key, int x, int y)
     //press space to toggle painting
     if (screen == game && key == 32) {
         saraf.getBrush().togglePaint();
+    }
+    //press o to save your drawing
+    if (screen == game && key == 111) {
+        thisMap.saveDrawing();
+    }
+    //press i to load your drawing
+    if (screen == game && key == 105) {
+        thisMap.loadDrawing();
+
+    }
+    //press u to clear the drawing
+    if (screen == game && key == 117) {
+        thisMap.clearDrawing();
     }
 
     glutPostRedisplay();

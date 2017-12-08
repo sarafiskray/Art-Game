@@ -92,6 +92,10 @@ void Map::loadDrawing() {
         }
 
         cout << "File loaded into the drawings vector" << endl;
+
+    }
+    else {
+        cout <<"No drawings saved. None were loaded." << endl;
     }
 }
 
