@@ -158,7 +158,7 @@ Brush Character::getBrush() const {
 
 void Character::moveLeft() {
     //So one doesn't go off the screen
-    if (!location.x == 0) {
+    if (!location.x == 0 && thisMap.isBeneath(location)) {
         location.x -= (horizontalMomentum) + 2;
         horizontalMomentum--;
     }
@@ -169,7 +169,7 @@ void Character::moveLeft() {
 
 void Character::moveRight() {
     //So one doesn't go off the screen
-    if (!location.x == 500) {
+    if (!location.x == 500 && thisMap.isBeneath(location)) {
         location.x += (horizontalMomentum) + 2;
         horizontalMomentum++;
     }

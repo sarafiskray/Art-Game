@@ -98,7 +98,6 @@ void draw_text(string text, int r, int g, int b, int x, int y) {
 }
 
 void display_game() {
-    thisMap.drawMap();
     saraf.draw();
 
     currentColorDisplay.set_fill(currentColor);
@@ -134,8 +133,8 @@ void display_game() {
         saraf.getBrush().draw(saraf.getLocation());
     }
 
-
-
+    //Move saraf again if he's got any momentum
+    saraf.be();
 
 }
 
@@ -159,6 +158,8 @@ void display() {
     /*
      * Draw here
      */
+
+    thisMap.drawMap();
 
     switch(screen) {
         case start: display_start();
