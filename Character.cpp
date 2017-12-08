@@ -130,18 +130,21 @@ void Character::be() {
     cout << "X: " << location.x << " Y: " << location.y << endl;
 
 }
-/*
+
 void Character::changeBrush() {
     if (brushSelection == brushes.size() - 1) {
         brushSelection = 0;
-        currentBrush = brushes[0];
     }
     else {
-        currentBrush = brushes[++brushSelection];
+        ++brushSelection;
     }
 
-    cout << "New Brush: " << currentBrush.getBrush << endl;
-}*/
+    cout << "New Brush: " << brushes[brushSelection].getBrushName() << endl;
+}
+
+Brush Character::getBrush() const {
+    return brushes[brushSelection];
+}
 
 void Character::moveLeft() {
     //So one doesn't go off the screen

@@ -32,6 +32,10 @@ protected:
 
 
 public:
+    color getColor() const;
+    color getPrevColor() const;
+    color getNextColor() const
+
     string getBrushName();
     //No setBrush, brush is set by changeBrush
 

@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-virtual void Brush::togglePaint() {
+void Brush::togglePaint() {
     painting = !painting;
     string descriptor;
     painting ? descriptor = "on" : descriptor = "off";
@@ -24,7 +24,28 @@ string Brush::getBrushName() {
 
 void Brush::changeColor() {
     currentColorIndex++;
+}
 
+color Brush::getPrevColor() const {
+    if (currentColorIndex == 0) {
+        return colorPalette[colorPalette.size() -1];
+    }
+    else {
+        return colorPalette[currentColorIndex - 1];
+    }
+}
+
+color Brush::getNextColor() const {
+    if (currentColorIndex == colorPalette.size()) {
+        return colorPalette[0];
+    }
+    else {
+        return colorPalette[currentColorIndex+1];
+    }
+}
+
+color Brush::getColor() const {
+    return colorPalette[currentColorIndex];
 }
 
 void Brush::draw(point location) {

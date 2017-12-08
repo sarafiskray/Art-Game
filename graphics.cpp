@@ -19,8 +19,21 @@ color playButtonText, playButtonColor;
 //Game screen elements
 Character saraf;
 Map thisMap;
+
+//The all important legend
 Rectangle legend;
 bool displayLegend;
+string legendHeader = "L E G E N D";
+string legend2 = "Arrow keys to move";
+string legend3 = "Press O to save the your drawing";
+string legend4 = "Press I to load your last drawing";
+string legend5 = "Press U to claer your drawing";
+string legend6 = "Press A or D to cycle through brush colors";
+string legend7 = "Press W or S to cycle through your brushes";
+vector<string> legendTexts = {legendHeader, legend2, legend3, legend4, legend5, legend6, legend7};
+
+color currentColor = saraf.getBrush().getColor();
+Rectangle currentColorDisplay, prevColorDisplay, nextColorDisplay;
 
 
 
@@ -41,6 +54,15 @@ void init() {
     playButtonColor = blackX;
 
     displayLegend = false;
+
+    currentColorDisplay.set_dimensions(15, 15);
+    currentColorDisplay.set_position(100, 20);
+
+    prevColorDisplay.set_dimensions(12, 12);
+    prevColorDisplay.set_position(86, 22);
+
+    nextColorDisplay.set_dimensions(12, 12);
+    nextColorDisplay.set_position(118, 22);
 }
 
 /* Initialize OpenGL Graphics */
@@ -79,15 +101,17 @@ void display_game() {
     thisMap.drawMap();
     saraf.draw();
 
-    string message = "press p for legend";
+    currentColorDisplay.set_fill(currentColor);
+    currentColorDisplay.draw();
+    prevColorDisplay.set_fill(saraf.getBrush().getPrevColor());
+    prevColorDisplay.draw();
+    draw_text("A", 1, 1, 1, 87, 23);
+    nextColorDisplay.set_fill(saraf.getBrush().getNextColor());
+    nextColorDisplay.draw();
+    draw_text("D", 1, 1, 1, 119, 23);
 
-    string legendHeader = "L E G E N D";
-    string legend2 = "Arrow keys to move";
-    string legend3 = "Press O to save the your drawing";
-    string legend4 = "Press I to load your last drawing";
-    string legend5 = "Press U to claer your drawing";
-    string legend6 = "Press A or D to cycle through brush colors.";
-    vector<string> legendTexts = {legendHeader, legend2, legend3, legend4, legend5, legend6};
+
+    string message = "press p for legend";
 
     if (displayLegend) {
         legend.set_position(400, 20);
@@ -101,8 +125,6 @@ void display_game() {
         }
 
     }
-
-
 
 
 
