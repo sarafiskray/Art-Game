@@ -25,7 +25,7 @@ public:
     color myColor;
 
     //constructors
-    Character();
+    Character(Map mapIn);
 
     Character(point p);
     Character(color f, point p);
@@ -110,7 +110,7 @@ private:
     double width;
     double height;
     //Brush currentBrush;
-    vector<Brush> brushes;
+    vector<unique_ptr<Brush>> brushes;
 
     //Two Momentums for controlling how the character responds and keeps moving after the player is not still running
     int horizontalMomentum;

@@ -21,7 +21,7 @@ public:
 
     //Default constructor creates a white brush of medium size
     //Everyone will start with a normal brush
-    NormalBrush();
+    NormalBrush(Map mapIn);
 
     //Setters
     void setColor(color colorIn);

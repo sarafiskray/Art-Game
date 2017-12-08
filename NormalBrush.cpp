@@ -3,9 +3,11 @@
 //
 #include "NormalBrush.h"
 
-NormalBrush::NormalBrush() {
+NormalBrush::NormalBrush(Map mapIn) {
     size = 2;
     brushName = "Brush";
+    thisMap = mapIn;
+    currentColorIndex = 0;
 }
 
 //Setters

@@ -7,14 +7,14 @@
 #include "DottedBrush.h"
 
 
-Character::Character() {
+Character::Character(Map mapIn) {
     fill = {0, 0, 0};
     width = 2;
     height = 2;
-    NormalBrush norm;
-    DottedBrush dot;
-    brushes.push_back(dot);
-    brushes.push_back(norm);
+    unique_ptr<NormalBrush> norm (new NormalBrush(mapIn));
+    unique_ptr<DottedBrush> dot (new DottedBrush{mapIn});
+    brushes.push_back(move(dot));
+    brushes.push_back(move(norm));
     //currentBrush = brushes[0];
     brushSelection = 0;
 
@@ -24,7 +24,7 @@ Character::Character() {
     location.x = 60;
     location.y = 60;
 
-    //thisMap = new Map();
+    thisMap = mapIn;
 };
 
 Character::Character(color f, int xIn, int yIn) {
@@ -149,11 +149,11 @@ void Character::changeBrush(int choice) {
         }
     }
 
-    cout << "New Brush: " << brushes[brushSelection].getBrushName() << endl;
+    //cout << "New Brush: " << brushes[brushSelection]->getBrushName() << endl;
 }
 
 Brush Character::getBrush() const {
-    return brushes[brushSelection];
+    return *(brushes[brushSelection]);
 }
 
 void Character::moveLeft() {

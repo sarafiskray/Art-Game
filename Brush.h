@@ -12,11 +12,11 @@
 
 #include "Splatter.h"
 #include "Map.h"
+#include "Headings.h"
 
 using namespace std;
 
 class Brush {
-
 
 protected:
     //Size multiplier for the brush splatters. To be implemented with graphics
@@ -28,7 +28,7 @@ protected:
     //Name for brush
     string brushName;
     //current color
-    color currentColor = colorPalette[0];
+    color currentColor;
     int currentColorIndex;
     Map thisMap;
 

@@ -17,8 +17,8 @@ Rectangulo start_background, playButton;
 color playButtonText, playButtonColor;
 
 //Game screen elements
-Character saraf;
 Map thisMap;
+Character saraf = Character(thisMap);
 
 //The all important legend
 Rectangulo legend;
@@ -34,12 +34,15 @@ string legend8 = "Press Q to decrease brush size, E to increase";
 string legend9 = "Press SPACE to toggle drawing";
 vector<string> legendTexts = {legendHeader, legend2, legend3, legend4, legend5, legend6, legend7, legend8, legend9};
 
-color currentColor = saraf.getBrush().getColor();
+color currentColor;
 Rectangulo currentColorDisplay, prevColorDisplay, nextColorDisplay;
 
 
 
 void init() {
+
+    currentColor = saraf.getBrush().getColor();
+
     width = 500;
     height = 500;
 
@@ -47,7 +50,7 @@ void init() {
     start_background.set_fill(1, 1, 1);
     start_background.set_dimensions(520, 520);
 
-    Rectangulo r1;
+
     playButton.set_position(300, 300);
     playButton.set_fill(0, 0, 0);
     playButton.set_dimensions(100, 50);
@@ -316,7 +319,7 @@ int graphicsPlay(int argc, char** argv) {
     glutInitWindowSize((int)width, (int)height);
     glutInitWindowPosition(100, 200); // Position the window's initial top-left corner
     /* create the window and store the handle to it */
-    wd = glutCreateWindow("Fun with Drawing!" /* title */ );
+    wd = glutCreateWindow("A R T" /* title */ );
 
     // Register callback handler for window re-paint event
     glutDisplayFunc(display);
