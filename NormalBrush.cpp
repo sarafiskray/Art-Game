@@ -10,8 +10,8 @@ NormalBrush::NormalBrush() {
 }
 
 //Setters
-void NormalBrush::setColor(Color colorIn) {
-    color = colorIn;
+void NormalBrush::setColor(color colorIn) {
+    currentColor = colorIn;
 }
 
 void NormalBrush::setSize(int sizeIn) {
@@ -20,7 +20,7 @@ void NormalBrush::setSize(int sizeIn) {
 
 //Getters
 color NormalBrush::getColor() const {
-    return color;
+    return currentColor;
 }
 
 int NormalBrush::getSize() const {
