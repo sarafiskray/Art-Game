@@ -22,6 +22,7 @@
 class Character {
 public:
     point location;
+    color myColor;
 
     //constructors
     Character();
