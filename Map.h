@@ -25,11 +25,16 @@ private:
     int NUMROW = 500;
     int NUMCOLUMN = 500;
 
+    bool savedDrawing;
+
 public:
 
     //constructor, makes vectors 100x100 and initializes the map a bit
     Map();
-    //maybe more constructors to come
+
+    bool getSaved() const;
+    void setSaved();
+    void addSplatter(Splatter splatIn);
     /*
      * saveDrawing
      * Requires: A valid mapFile

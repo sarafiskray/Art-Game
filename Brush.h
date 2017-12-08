@@ -11,6 +11,7 @@
 #include <string>
 
 #include "Splatter.h"
+#include "Map.h"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ protected:
     //current color
     color currentColor = colorPalette[0];
     int currentColorIndex;
+    Map thisMap;
 
 
 public:

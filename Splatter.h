@@ -30,6 +30,7 @@ public:
     void setX(int xIn);
     void setY(int yIn);
 
+    int getSize() const;
     color getFill() const;
     int getX() const;
     int getY() const;

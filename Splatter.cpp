@@ -27,6 +27,10 @@ void Splatter::setY(int yIn) {
     location.y = yIn;
 }
 
+int Splatter::getSize() const {
+    return height;
+}
+
 void Splatter::drawSplatter() const {
     glColor3f(fill.red, fill.green, fill.blue);
     glBegin(GL_QUADS);

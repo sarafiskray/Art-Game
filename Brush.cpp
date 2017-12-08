@@ -80,5 +80,7 @@ void Brush::draw(point location) {
     if(painting) {
         thisSplatter = Splatter(getColor(), location, size);
         thisSplatter.drawSplatter();
+        //Add the splatter to the background vector too
+        thisMap.addSplatter(thisSplatter);
     }
 }

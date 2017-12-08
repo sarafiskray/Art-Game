@@ -22,28 +22,42 @@ Map::Map() {
         platforms[i][NUMROW-5] = 1;
     }
 
+    savedDrawing = false;
+
+}
+
+void Map::addSplatter(Splatter splatIn) {
+    drawing.push_back(splatIn);
+}
+
+void Map::setSaved() {
+    savedDrawing = !savedDrawing;
 }
 
 void Map::saveDrawing(){
-    ofstream fileIn(mapFile);
+    ofstream fileIn(mapFile, ios::app);
 
     if (fileIn) {
         cout << "File opened successfully" << endl;
 
         for (Splatter splat : drawing) {
-                fileIn << splat.getFill().red;
-                fileIn << ";";
-                fileIn << splat.getFill().blue;
-                fileIn << ";";
-                fileIn << splat.getFill().green;
-                fileIn << ";";
-                fileIn << splat.getX();
-                fileIn << ";";
-                fileIn << splat.getY();
-                fileIn << endl;
-            }
+            fileIn << splat.getFill().red;
+            fileIn << ";";
+            fileIn << splat.getFill().blue;
+            fileIn << ";";
+            fileIn << splat.getFill().green;
+            fileIn << ";";
+            fileIn << splat.getX();
+            fileIn << ";";
+            fileIn << splat.getY();
+            fileIn << ";";
+            fileIn << splat.getSize();
+            fileIn << endl;
         }
-    cout << "Drawing was saved to the file." << endl;
+
+        cout << "Drawing was saved to the file." << endl;
+        savedDrawing = true;
+    }
 }
 
 
@@ -53,10 +67,9 @@ void Map::loadDrawing() {
     if (fileIn) {
         cout << "File opened successfully." << endl;
 
-        int r, g, b;
+        int r, g, b, size;
         point loc;
         char junk;
-        vector<Splatter> splats;
 
         //Reads each part of the splatter in from a file, in this order: R; G; B; xLocation; yLocation
         while (fileIn && fileIn.peek() != EOF) {
@@ -69,9 +82,11 @@ void Map::loadDrawing() {
             fileIn >> loc.x;
             fileIn >> junk;
             fileIn >> loc.y;
+            fileIn >> junk;
+            fileIn >> size;
 
             //Puts a splatter in the place where we said it would be, of that fill
-            Splatter tempSplat = Splatter(r, g, b, loc.x, loc.y);
+            Splatter tempSplat = Splatter(r, g, b, loc.x, loc.y, size);
             drawing.push_back(tempSplat);
 
         }
