@@ -276,9 +276,18 @@ void mouse(int button, int state, int x, int y) {
         screen = game;
     }
 
+    //if you click the next color on the display, it will move to the next one
+    else if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && screen == game && nextColorDisplay.is_overlapping(x, y)) {
+        saraf.changeBrush(0);
+    }
+
+    //similarly, if you click the previous color, it will also switch
+    else if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && screen == game && nextColorDisplay.is_overlapping(x, y)) {
+        saraf.changeBrush(1);
+    }
 
 
-    glutPostRedisplay();
+        glutPostRedisplay();
 }
 
 void timer(int extra) {
