@@ -19,6 +19,7 @@ color playButtonText, playButtonColor;
 //Game screen elements
 Map thisMap;
 Character saraf = Character(thisMap);
+Rectangulo game_background;
 
 //The all important legend
 Rectangulo legend;
@@ -67,6 +68,9 @@ void init() {
 
     nextColorDisplay.set_dimensions(12, 12);
     nextColorDisplay.set_position(118, 22);
+
+    game_background.set_dimensions(550, 550);
+    game_background.set_fill(whiteX);
 }
 
 /* Initialize OpenGL Graphics */
@@ -85,6 +89,8 @@ void display_start() {
     for (int i = 0; i < message.length(); ++i) {
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, message[i]);
     }
+    playButton.draw();
+
     message = "play";
     glColor3f(playButtonText.red, playButtonText.blue, playButtonText.green);
     glRasterPos2i(320, 320);
@@ -103,6 +109,7 @@ void draw_text(string text, int r, int g, int b, int x, int y) {
 
 void display_game() {
     //This updates the map, in case we load a new save or clear everything
+    game_background.draw();
     thisMap.drawMap();
 
     saraf.draw();
@@ -124,14 +131,14 @@ void display_game() {
     string message = "press p for legend";
 
     if (displayLegend) {
-        legend.set_position(400, 20);
+        legend.set_position(380, 20);
         legend.set_dimensions(80, 100);
         legend.set_fill(blackX);
         legend.draw();
 
         int yLoc = 30;
         for (string text : legendTexts) {
-            draw_text(text, 1, 1, 1, 410, yLoc += 20);
+            draw_text(text, 1, 1, 1, 390, yLoc += 20);
         }
     }
 
