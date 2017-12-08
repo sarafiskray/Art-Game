@@ -5,7 +5,11 @@
 
 NormalBrush::NormalBrush() {
     size = 2;
+    painting = false;
+    currentColorIndex = 0;
+    currentColor = colorPalette[currentColorIndex];
     brushName = "Brush";
+
 }
 
 //Setters

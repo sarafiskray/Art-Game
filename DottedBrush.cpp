@@ -6,6 +6,10 @@
 #include "DottedBrush.h"
 
 DottedBrush::DottedBrush() {
+    size = 2;
+    painting = false;
+    currentColorIndex = 0;
+    currentColor = colorPalette[currentColorIndex];
     brushName = "Dotted Brush";
 };
 
