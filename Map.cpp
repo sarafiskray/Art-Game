@@ -16,7 +16,7 @@ using namespace std;
 Map::Map() {
     //Makes platforms a 100x100, or NUMCOLUMNxNUMROW
     platforms.resize(NUMCOLUMN, vector<int>(NUMROW, 0));
-
+    drawing.resize(0);
     //Make the bottom row full, at least
     for (int i = 0; i < NUMCOLUMN; i++ ) {
         platforms[i][NUMROW-5] = 1;
@@ -24,7 +24,7 @@ Map::Map() {
 
 }
 
-void Map::saveDrawing() const{
+void Map::saveDrawing(){
     ofstream fileIn(mapFile);
 
     if (fileIn) {
@@ -47,7 +47,7 @@ void Map::saveDrawing() const{
 }
 
 
-void Map::loadDrawing() const {
+void Map::loadDrawing() {
     ifstream fileIn(mapFile);
 
     if (fileIn) {
@@ -72,11 +72,9 @@ void Map::loadDrawing() const {
 
             //Puts a splatter in the place where we said it would be, of that fill
             Splatter tempSplat = Splatter(r, g, b, loc.x, loc.y);
-            splats.push_back(Splatter(r, g, b, loc.x, loc.y));
+            drawing.push_back(tempSplat);
 
         }
-        //Set the drawing vector equal to the new one we just made
-        drawing = splats;
 
         cout << "File loaded into the drawings vector" << endl;
     }

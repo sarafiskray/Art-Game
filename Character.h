@@ -46,7 +46,6 @@ public:
     color getcolor() const;
     int getHMomentum() const;
     int getVMomentum() const;
-    Brush& getBrush() const;
 
     //setters
     //No setBrush because that is where we use changeBrush

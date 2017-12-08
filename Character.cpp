@@ -68,10 +68,6 @@ color Character::getcolor() const {
     return fill;
 }
 
-Brush& Character::getBrush() const {
-    return brushes[brushSelection];
-}
-
 void Character::setHMomentum(int x) {
     horizontalMomentum = x;
 }

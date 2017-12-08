@@ -10,6 +10,7 @@
 #include <vector>
 using namespace std;
 #include <string>
+#include <memory>
 
 class Map {
 
@@ -35,7 +36,7 @@ public:
      * Modifies: Nothing, except the mapFile itself
      * Effects: Writes to mapFile the indeces of each Splatter
      */
-    void saveDrawing() const;
+    void saveDrawing();
 
     /*
      * loadDrawing
@@ -43,7 +44,7 @@ public:
      * Modifies: drawing vector
      * Effects: Adds a splatter to drawing vector at the indeces found in the mapFile
      */
-    void loadDrawing() const;
+    void loadDrawing();
     /*
      * clearDrawing
      * Requires: Nothing
