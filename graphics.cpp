@@ -216,16 +216,21 @@ void kbdS(int key, int x, int y) {
 
             break;
         case GLUT_KEY_LEFT:
-            if (screen = game) {
-
+            if (screen == game) {
+                saraf.moveLeft();
             }
 
             break;
         case GLUT_KEY_RIGHT:
+            if (screen == game) {
+                saraf.moveRight();
+            }
 
             break;
         case GLUT_KEY_UP:
-
+            if (screen == game) {
+                saraf.jump();
+            }
             break;
     }
 

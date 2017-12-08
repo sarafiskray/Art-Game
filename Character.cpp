@@ -159,7 +159,7 @@ Brush Character::getBrush() const {
 void Character::moveLeft() {
     //So one doesn't go off the screen
     if (!location.x == 0) {
-        location.x -= (horizontalMomentum * 3) + 2;
+        location.x -= (horizontalMomentum) + 2;
         horizontalMomentum--;
     }
 
@@ -169,8 +169,8 @@ void Character::moveLeft() {
 
 void Character::moveRight() {
     //So one doesn't go off the screen
-    if (!location.x == 100) {
-        location.x += (horizontalMomentum * 3) + 2;
+    if (!location.x == 500) {
+        location.x += (horizontalMomentum) + 2;
         horizontalMomentum++;
     }
 
