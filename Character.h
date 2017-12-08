@@ -21,6 +21,8 @@
 
 class Character {
 public:
+    //Map the character is operating within
+    Map thisMap;
     point location;
     color myColor;
 
@@ -116,8 +118,7 @@ private:
     int horizontalMomentum;
     int verticalMomentum;
 
-    //Map the character is operating within
-    Map thisMap;
+
 
     //An index of the current brush, for use in the changeBrush method
     int brushSelection;

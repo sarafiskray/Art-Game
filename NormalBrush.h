@@ -19,7 +19,7 @@ private:
     
 public:
 
-    //Default constructor creates a white brush of medium size
+    //Default constructor creates a brush of medium size
     //Everyone will start with a normal brush
     NormalBrush(Map mapIn);
 
