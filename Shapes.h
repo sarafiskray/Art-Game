@@ -85,16 +85,16 @@ private:
     // center of the circle
 };
 
-class Rectangle : public Shape {
+class Rectangulo : public Shape {
 public:
     // Constructors
-    Rectangle();
-    Rectangle(double b, double h);
-    Rectangle(double b, double h, color f);
-    Rectangle(color f);
-    Rectangle(int x_in, int y_in);
-    Rectangle(point p);
-    Rectangle(double b, double h, color f, int x_in, int y_in);
+    Rectangulo();
+    Rectangulo(double b, double h);
+    Rectangulo(double b, double h, color f);
+    Rectangulo(color f);
+    Rectangulo(int x_in, int y_in);
+    Rectangulo(point p);
+    Rectangulo(double b, double h, color f, int x_in, int y_in);
 
     // getters
     // setters
@@ -108,7 +108,7 @@ public:
 
     void draw() const override;
 
-    // detect if the rectangle is overlapping with a coordinate point
+    // detect if the Rectangulo is overlapping with a coordinate point
     bool is_overlapping(const point &p);
     bool is_overlapping(int x, int y);
 
@@ -118,7 +118,7 @@ private:
     double base;
     double height;
     // Note: the inherited point will represent
-    // the top left corner of the rectangle
+    // the top left corner of the Rectangulo
 };
 
 

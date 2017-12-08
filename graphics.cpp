@@ -13,7 +13,7 @@ enum screen_type {start, game};
 screen_type screen;
 
 //Start screen elements
-Rectangle start_background, playButton;
+Rectangulo start_background, playButton;
 color playButtonText, playButtonColor;
 
 //Game screen elements
@@ -21,7 +21,7 @@ Character saraf;
 Map thisMap;
 
 //The all important legend
-Rectangle legend;
+Rectangulo legend;
 bool displayLegend;
 string legendHeader = "L E G E N D";
 string legend2 = "Arrow keys to move";
@@ -35,7 +35,7 @@ string legend9 = "Press SPACE to toggle drawing";
 vector<string> legendTexts = {legendHeader, legend2, legend3, legend4, legend5, legend6, legend7, legend8, legend9};
 
 color currentColor = saraf.getBrush().getColor();
-Rectangle currentColorDisplay, prevColorDisplay, nextColorDisplay;
+Rectangulo currentColorDisplay, prevColorDisplay, nextColorDisplay;
 
 
 
@@ -47,7 +47,7 @@ void init() {
     start_background.set_fill(1, 1, 1);
     start_background.set_dimensions(520, 520);
 
-    Rectangle r1;
+    Rectangulo r1;
     playButton.set_position(300, 300);
     playButton.set_fill(0, 0, 0);
     playButton.set_dimensions(100, 50);

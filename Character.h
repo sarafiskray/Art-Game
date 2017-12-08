@@ -31,9 +31,6 @@ public:
     Character(color f, point p);
     Character(color f, int xIn, int yIn);
 
-    //Destructor
-    ~Character();
-
 
     //getters
 

@@ -125,7 +125,7 @@ void Circle::draw() const {
     glBegin(GL_TRIANGLE_FAN);
     glColor3f(fill.red, fill.green, fill.blue);
     glVertex2i(position.x, position.y);
-    for (double i = 0; i <= 2.0*M_PI+0.05; i += 2.0*M_PI/360.0) {
+    for (double i = 0; i <= 2.0*3.1415926+0.05; i += 2.0*3.1415926/360.0) {
         glVertex2i(position.x+radius*cos(i),position.y+radius*sin(i));
     }
     glEnd();
@@ -155,45 +155,45 @@ bool Circle::is_overlapping(int x, int y) {
 }
 
 double Circle::calculate_area() const {
-    return M_PI * radius * radius;
+    return 3.1415926 * radius * radius;
 }
 
 double Circle::calculate_perimeter() const {
-    return 2.0 * M_PI * radius;
+    return 2.0 * 3.1415926 * radius;
 }
 
 /*************** End of Circle class ********************/
 
-/********** Beginning of Rectangle class ****************/
+/********** Beginning of Rectangulo class ****************/
 
-Rectangle::Rectangle() : Shape(), base(0), height(0) {
+Rectangulo::Rectangulo() : Shape(), base(0), height(0) {
 }
 
-Rectangle::Rectangle(double b, double h) : Shape() {
+Rectangulo::Rectangulo(double b, double h) : Shape() {
     // NOT using initializer list with b and h
     // because we want to check for valid input
     // so we call setters instead.
     set_dimensions(b, h);
 }
 
-Rectangle::Rectangle(double b, double h, color f) : Shape(f) {
+Rectangulo::Rectangulo(double b, double h, color f) : Shape(f) {
     set_dimensions(b, h);
 }
 
-Rectangle::Rectangle(color f) : Shape(f), base(0), height(0) {
+Rectangulo::Rectangulo(color f) : Shape(f), base(0), height(0) {
 }
 
-Rectangle::Rectangle(int x_in, int y_in) : Shape(x_in, y_in), base(0), height(0) {
+Rectangulo::Rectangulo(int x_in, int y_in) : Shape(x_in, y_in), base(0), height(0) {
 }
 
-Rectangle::Rectangle(point p) : Shape(p), base(0), height(0) {
+Rectangulo::Rectangulo(point p) : Shape(p), base(0), height(0) {
 }
 
-Rectangle::Rectangle(double b, double h, color f, int x_in, int y_in) : Shape(f, x_in, y_in) {
+Rectangulo::Rectangulo(double b, double h, color f, int x_in, int y_in) : Shape(f, x_in, y_in) {
     set_dimensions(b, h);
 }
 
-void Rectangle::set_top_left(int x_in, int y_in) {
+void Rectangulo::set_top_left(int x_in, int y_in) {
     if (x_in < 0){
         x_in = 0;
     }
@@ -206,26 +206,26 @@ void Rectangle::set_top_left(int x_in, int y_in) {
     // position.y = y_in;
 }
 
-void Rectangle::set_base(double b) {
+void Rectangulo::set_base(double b) {
     if (b < 0) {
         b = 0;
     }
     base = b;
 }
 
-void Rectangle::set_height(double h) {
+void Rectangulo::set_height(double h) {
     if (h < 0) {
         h = 0;
     }
     height = h;
 }
 
-void Rectangle::set_dimensions(double b, double h) {
+void Rectangulo::set_dimensions(double b, double h) {
     set_base(b);
     set_height(h);
 }
 
-void Rectangle::draw() const {
+void Rectangulo::draw() const {
     glColor3f(fill.red, fill.green, fill.blue);
     glBegin(GL_QUADS);
     // top left corner
@@ -239,24 +239,24 @@ void Rectangle::draw() const {
     glEnd();
 }
 
-bool Rectangle::is_overlapping(const point &p) {
+bool Rectangulo::is_overlapping(const point &p) {
     // this is not recursive
     // this calls the other is_overlapping method
     return is_overlapping(p.x, p.y);
 }
 
-bool Rectangle::is_overlapping(int x, int y) {
-    // check to see if x and y are in range of the rectangle
+bool Rectangulo::is_overlapping(int x, int y) {
+    // check to see if x and y are in range of the Rectangulo
     return (x >= position.x && x <= (position.x + base) &&
             y >= position.y && y <= (position.y + height));
 }
 
-double Rectangle::calculate_area() const {
+double Rectangulo::calculate_area() const {
     return base * height;
 }
 
-double Rectangle::calculate_perimeter() const {
+double Rectangulo::calculate_perimeter() const {
     return 2.0 * base + 2.0 * height;
 }
 
-/********** End of Rectangle class ****************/
+/********** End of Rectangulo class ****************/
