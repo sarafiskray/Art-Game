@@ -131,14 +131,14 @@ void display_game() {
     string message = "press p for legend";
 
     if (displayLegend) {
-        legend.set_position(380, 20);
-        legend.set_dimensions(80, 100);
+        legend.set_position(300, 20);
+        legend.set_dimensions(190, 200);
         legend.set_fill(blackX);
         legend.draw();
 
         int yLoc = 30;
         for (string text : legendTexts) {
-            draw_text(text, 1, 1, 1, 390, yLoc += 20);
+            draw_text(text, 1, 1, 1, 310, yLoc += 20);
         }
     }
 

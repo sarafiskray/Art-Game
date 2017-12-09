@@ -127,7 +127,7 @@ void Character::be() {
     }
 
     //Now report where the character is
-    cout << "X: " << location.x << " Y: " << location.y << endl;
+    cout << "Be: X: " << location.x << " Y: " << location.y << endl;
 
 }
 
@@ -158,8 +158,8 @@ Brush Character::getBrush() const {
 
 void Character::moveLeft() {
     //So one doesn't go off the screen
-    if (!(location.x == 0) && thisMap.isBeneath(location)) {
-        location.x -= (horizontalMomentum) + 2;
+    if (!(location.x == 0) && thisMap.isBeneath(location) && (location.x - (horizontalMomentum +2)) > 0) {
+        location.x -= -(horizontalMomentum) + 2;
         horizontalMomentum--;
     }
 
@@ -169,7 +169,7 @@ void Character::moveLeft() {
 
 void Character::moveRight() {
     //So one doesn't go off the screen
-    if (!(location.x == 500) && thisMap.isBeneath(location)) {
+    if (!(location.x == 500) && thisMap.isBeneath(location) && (location.x + (horizontalMomentum +2)) < 500) {
         location.x += (horizontalMomentum) + 2;
         horizontalMomentum++;
     }
@@ -188,22 +188,26 @@ void Character::jump() {
 
     //Character actually can go above the stage, so no special case
 
-    cout << "X: " << location.x << " Y: " << location.y << endl;
+    cout << "Jumping! X: " << location.x << " Y: " << location.y << endl;
 
 }
 
 void Character::fall() {
-
-    location.y += 4 * -verticalMomentum;
     verticalMomentum--;
+    location.y += 1 * -verticalMomentum;
 
-    //If it falls through the floor, then put it back in the center. Shouldn't happen anyway
-    if (location.y > 100) {
-        location.x = 50;
-        location.y = 50;
+    if (verticalMomentum < 4) {
+        verticalMomentum = 4;
     }
 
-    cout << "X: " << location.x << " Y: " << location.y << endl;
+
+    //If it falls through the floor, then put it back in the center. Shouldn't happen anyway
+    if (location.y > 500) {
+        location.x = 50;
+        location.y = 494;
+    }
+
+    cout << "Falling! X: " << location.x << " Y: " << location.y << endl;
 
 }
 

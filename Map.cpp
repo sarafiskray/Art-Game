@@ -105,6 +105,7 @@ void Map::clearDrawing() {
 }
 
 bool Map::isBeneath(point p) {
+    cout << platforms[p.x][p.y] << endl;
     return (platforms[p.x][p.y] == 1);
 }
 
