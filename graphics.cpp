@@ -249,7 +249,7 @@ void kbd(unsigned char key, int x, int y)
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
-                saraf.fall();
+
             break;
         case GLUT_KEY_LEFT:
             if (screen == game) {
@@ -280,10 +280,7 @@ void cursor(int x, int y) {
         if (playButton.is_overlapping(x, y)) {
             playButton.set_fill(whiteX);
             playButtonText = blackX;
-        } else if (!playButton.is_overlapping(x,y)){
-            playButton.set_fill(blackX);
-            playButtonText = whiteX;
-    }
+        }
     }
 
 

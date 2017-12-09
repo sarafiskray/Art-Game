@@ -13,13 +13,9 @@ private:
     int dottedSpeed;
 
 public:
-
-    DottedBrush::DottedBrush(Map mapIn);
-
     int getDottedSpeed() const;
     void setDottedSpeed(int speedIn);
     void changeColor();
-    void setMap(Map mapIn);
     DottedBrush();
     DottedBrush(int ds);
 
