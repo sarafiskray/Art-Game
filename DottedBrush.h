@@ -10,6 +10,8 @@
 class DottedBrush : public Brush {
 
 private:
+    //higher speed, the fewer dots
+    //lower speed means more dots
     int dottedSpeed;
 
 public:
@@ -20,6 +22,7 @@ public:
     void setDottedSpeed(int speedIn);
     void changeColor();
     void setMap(Map mapIn);
+    void draw(point location) override;
     DottedBrush(int ds);
 
 };
