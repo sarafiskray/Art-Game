@@ -104,6 +104,9 @@ public:
     void fall();
 
     void draw() const;
+
+    void leftPress();
+    void rightPress();
     
 
 private:

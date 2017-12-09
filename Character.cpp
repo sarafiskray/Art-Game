@@ -9,8 +9,8 @@
 
 Character::Character(Map mapIn) {
     fill = {0, 0, 0};
-    width = 2;
-    height = 2;
+    width = 20;
+    height = 20;
     unique_ptr<NormalBrush> norm (new NormalBrush(mapIn));
     unique_ptr<DottedBrush> dot (new DottedBrush{mapIn});
     brushes.push_back(move(dot));
@@ -111,13 +111,16 @@ void Character::be() {
 
     //If the player has upward momentum, it moves up proportional to the momentum and then decreases that
     if (verticalMomentum > 0) {
-        location.y += (verticalMomentum * 3);
+        location.y += (verticalMomentum + 1);
         verticalMomentum--;
     }
         //if there is nothing underneath the character, then it calls the fall function
     else {
         if (!thisMap.isBeneath(location)) {
             fall();
+        }
+        else {
+            verticalMomentum = 1;
         }
     }
 
@@ -130,6 +133,71 @@ void Character::be() {
     cout << "Be: X: " << location.x << " Y: " << location.y << endl;
 
 }
+
+void Character::leftPress() {
+    horizontalMomentum -= 3;
+    moveLeft();
+}
+
+void Character::moveLeft() {
+    //So one doesn't go off the screen
+    if (!(location.x == 0) && thisMap.isBeneath({location.x, location.y + 20}) && (location.x - (horizontalMomentum +2)) > 0) {
+        location.x -= -(horizontalMomentum) * 2;
+    }
+
+    cout << "X: " << location.x << " Y: " << location.y << endl;
+
+}
+
+void Character::rightPress() {
+    horizontalMomentum += 3;
+    moveRight();
+}
+
+void Character::moveRight() {
+    //So one doesn't go off the screen
+    if (!(location.x == 500) && thisMap.isBeneath({location.x, location.y + 20}) && (location.x + (horizontalMomentum +2)) < 500) {
+        location.x += (horizontalMomentum) * 2;
+    }
+
+    cout << "X: " << location.x << " Y: " << location.y << endl;
+
+}
+
+void Character::jump() {
+    //Only works if you have something to jump off of
+    if (thisMap.isBeneath({location.x, location.y+20})) {
+        verticalMomentum += 4;
+        location.y -= verticalMomentum * 3;
+
+        //Character actually can go above the stage, so no special case
+        cout << "Jumping! X: " << location.x << " Y: " << location.y << endl;
+    }
+
+}
+
+void Character::fall() {
+
+    verticalMomentum--;
+    location.y += 1 * -verticalMomentum;
+
+    if (verticalMomentum < 4) {
+        verticalMomentum = 4;
+    }
+
+
+    //If it falls through the floor, then put it back in the center. Shouldn't happen anyway
+    if (location.y > 475) {
+        location.x = 50;
+        location.y = 475;
+        verticalMomentum = 0;
+    }
+
+    cout << "Falling! X: " << location.x << " Y: " << location.y << endl;
+
+
+}
+
 
 void Character::changeBrush(int choice) {
     if (choice == 0) {
@@ -156,60 +224,6 @@ Brush Character::getBrush() const {
     return *(brushes[brushSelection]);
 }
 
-void Character::moveLeft() {
-    //So one doesn't go off the screen
-    if (!(location.x == 0) && thisMap.isBeneath(location) && (location.x - (horizontalMomentum +2)) > 0) {
-        location.x -= -(horizontalMomentum) + 2;
-        horizontalMomentum--;
-    }
-
-    cout << "X: " << location.x << " Y: " << location.y << endl;
-
-}
-
-void Character::moveRight() {
-    //So one doesn't go off the screen
-    if (!(location.x == 500) && thisMap.isBeneath(location) && (location.x + (horizontalMomentum +2)) < 500) {
-        location.x += (horizontalMomentum) + 2;
-        horizontalMomentum++;
-    }
-
-    cout << "X: " << location.x << " Y: " << location.y << endl;
-
-}
-
-void Character::jump() {
-    //Only works if you have something to jump off of
-    if (thisMap.isBeneath(location)) {
-        verticalMomentum += 4;
-        location.y -= 4;
-
-    }
-
-    //Character actually can go above the stage, so no special case
-
-    cout << "Jumping! X: " << location.x << " Y: " << location.y << endl;
-
-}
-
-void Character::fall() {
-    verticalMomentum--;
-    location.y += 1 * -verticalMomentum;
-
-    if (verticalMomentum < 4) {
-        verticalMomentum = 4;
-    }
-
-
-    //If it falls through the floor, then put it back in the center. Shouldn't happen anyway
-    if (location.y > 500) {
-        location.x = 50;
-        location.y = 494;
-    }
-
-    cout << "Falling! X: " << location.x << " Y: " << location.y << endl;
-
-}
 
 void Character::draw() const {
     glColor3f(fill.red, fill.green, fill.blue);

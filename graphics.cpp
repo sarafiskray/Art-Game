@@ -252,13 +252,13 @@ void kbdS(int key, int x, int y) {
             break;
         case GLUT_KEY_LEFT:
             if (screen == game) {
-                saraf.moveLeft();
+                saraf.leftPress();
             }
 
             break;
         case GLUT_KEY_RIGHT:
             if (screen == game) {
-                saraf.moveRight();
+                saraf.rightPress();
             }
 
             break;
@@ -279,6 +279,10 @@ void cursor(int x, int y) {
         if (playButton.is_overlapping(x, y)) {
             playButton.set_fill(whiteX);
             playButtonText = blackX;
+        }
+        else if (!playButton.is_overlapping(x, y)) {
+            playButton.set_fill(blackX);
+            playButtonText = whiteX;
         }
     }
 
