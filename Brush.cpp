@@ -14,32 +14,52 @@ bool Brush::getPainting() const {
 }
 
 void Brush::togglePaint() {
-    painting = !painting;
-    string descriptor;
-    painting ? descriptor = "on" : descriptor = "off";
-    cout << "Painting is now " << descriptor << endl;
+    if (painting) {
+        painting = false;
+    }
+    else {
+        painting = true;
+    }
+
+    if (painting) {
+        cout << "Painting is on" << endl;
+    }
+
+    else {
+        cout << "Painting is off." << endl;
+    }
 }
 
-string Brush::getBrushName() {
+string Brush::getBrushName() const {
     return brushName;
 }
 
 void Brush::changeColor(int choice) {
+    cout << "Change color is running" << endl;
+    //Next color
     if (choice == 0) {
-        if (currentColorIndex == colorPalette.size() - 1) {
+        if (currentColorIndex == (colorPalette.size() - 1)) {
             currentColorIndex = 0;
-        } else {
-            ++currentColorIndex;
         }
+        else {
+            currentColorIndex += 1;
+        }
+
+        cout << "current color index = " << currentColorIndex << endl;
     }
+    //Prev color
     else {
         if (currentColorIndex == 0) {
             currentColorIndex = colorPalette.size() - 1;
         }
         else {
-            currentColorIndex--;
+            currentColorIndex -= 1;
         }
+
+        cout << "current color index = " << currentColorIndex << endl;
     }
+
+    currentColor = colorPalette[currentColorIndex];
 }
 
 color Brush::getPrevColor() const {
@@ -61,7 +81,7 @@ color Brush::getNextColor() const {
 }
 
 color Brush::getColor() const {
-    return colorPalette[currentColorIndex];
+    return currentColor;
 }
 
 void Brush::changeSize(int choice) {
@@ -75,12 +95,11 @@ void Brush::changeSize(int choice) {
     }
 }
 
-void Brush::draw(point location) {
-    //If painting is toggled on, start placing splatters of the current color and current location. Location will modify frequently
-    if(painting) {
-        thisSplatter = Splatter(getColor(), location, size);
-        thisSplatter.drawSplatter();
-        //Add the splatter to the background vector too
-        thisMap.addSplatter(thisSplatter);
-    }
+void Brush::drawHere(const point location) {
+
+    thisSplatter = Splatter(Brush::getColor(), location, size);
+    thisSplatter.drawSplatter();
+    thisMap->addSplatter(thisSplatter);
+    cout << "Splatter placed at " << location.x << "," << location.y << endl;
+
 }

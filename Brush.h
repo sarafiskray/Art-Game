@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "graphics.h"
 
 #include "Splatter.h"
 #include "Map.h"
@@ -30,7 +31,7 @@ protected:
     //current color
     color currentColor;
     int currentColorIndex;
-    Map thisMap;
+    Map *thisMap;
 
 
 public:
@@ -40,7 +41,7 @@ public:
     color getPrevColor() const;
     color getNextColor() const;
 
-    string getBrushName();
+    string getBrushName() const;
     //No setBrush, brush is set by changeBrush
 
     /*
@@ -67,7 +68,7 @@ public:
      * Modifies: thisSplatter
      * Effects: changes thisSplatter to something dependent on current location
      */
-    virtual void draw(point location);
+    virtual void drawHere(const point location);
 
     void changeSize(int choice);
 

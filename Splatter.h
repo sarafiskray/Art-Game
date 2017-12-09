@@ -35,7 +35,7 @@ public:
     int getX() const;
     int getY() const;
 
-    void drawSplatter() const;
+    void drawSplatter();
 };
 
 #endif //THE_STATISTICS_SPLATTER_H

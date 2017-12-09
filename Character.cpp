@@ -7,7 +7,7 @@
 #include "DottedBrush.h"
 
 
-Character::Character(Map mapIn) {
+Character::Character(Map *mapIn) {
     fill = {0, 0, 0};
     width = 20;
     height = 20;
@@ -17,12 +17,13 @@ Character::Character(Map mapIn) {
     brushes.push_back(move(norm));
     //currentBrush = brushes[0];
     brushSelection = 0;
+    NormalBrush normie(mapIn);
 
     horizontalMomentum = 0;
     verticalMomentum = 0;
 
-    location.x = 60;
-    location.y = 60;
+    location.x = 100;
+    location.y = 400;
 
     thisMap = mapIn;
 };
@@ -116,7 +117,7 @@ void Character::be() {
     }
         //if there is nothing underneath the character, then it calls the fall function
     else {
-        if (!thisMap.isBeneath({location.x, location.y + 20})) {
+        if (!thisMap->isBeneath({location.x, location.y + 20})) {
             fall();
             verticalMomentum--;
         }
@@ -126,12 +127,12 @@ void Character::be() {
     }
 
     //If the character is landed, it has no vertical momentum
-    if (thisMap.isBeneath({location.x, location.y + 20}))  {
+    if (thisMap->isBeneath({location.x, location.y + 20}))  {
         verticalMomentum = 0;
     }
 
     //Now report where the character is
-    cout << "Be: X: " << location.x << " Y: " << location.y << endl;
+    //cout << "Be: X: " << location.x << " Y: " << location.y << endl;
 
 }
 
@@ -150,6 +151,7 @@ void Character::moveLeft() {
     }
 
     cout << "X: " << location.x << " Y: " << location.y << endl;
+    getBrush().drawHere(location);
 
 }
 
@@ -168,16 +170,18 @@ void Character::moveRight() {
     }
 
     cout << "X: " << location.x << " Y: " << location.y << endl;
+    getBrush().drawHere(location);
 
 }
 
 void Character::jump() {
     //Only works if you have something to jump off of
-    if (thisMap.isBeneath({location.x, location.y+20})) {
+    if (thisMap->isBeneath({location.x, location.y+20})) {
         verticalMomentum += 10;
 
         //Character actually can go above the stage, so no special case
         cout << "Jumping! X: " << location.x << " Y: " << location.y << endl;
+        getBrush().drawHere(location);
     }
 
 }
@@ -185,6 +189,7 @@ void Character::jump() {
 void Character::fall() {
 
     location.y += 1 * -verticalMomentum;
+    getBrush().drawHere(location);
 
     if (verticalMomentum < -4) {
         verticalMomentum = -4;
@@ -197,7 +202,7 @@ void Character::fall() {
         verticalMomentum = 0;
     }
 
-    cout << "Falling! X: " << location.x << " Y: " << location.y << endl;
+    //cout << "Falling! X: " << location.x << " Y: " << location.y << endl;
 
 }
 
@@ -225,6 +230,12 @@ void Character::changeBrush(int choice) {
 
 Brush Character::getBrush() const {
     return *(brushes[brushSelection]);
+
+}
+
+void Character::changeColor(int choice) {
+    getBrush().changeColor(choice);
+    cout << "Color may have been changed" << endl;
 }
 
 

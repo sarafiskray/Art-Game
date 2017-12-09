@@ -5,6 +5,7 @@
 #include "graphics.h"
 #include "Shapes.h"
 #include "Character.h"
+#include "Map.h"
 
 GLdouble width, height;
 int wd;
@@ -18,7 +19,7 @@ color playButtonText, playButtonColor;
 
 //Game screen elements
 Map thisMap;
-Character saraf = Character(thisMap);
+Character saraf = Character(&thisMap);
 Rectangulo game_background;
 
 //The all important legend
@@ -60,14 +61,14 @@ void init() {
 
     displayLegend = false;
 
-    currentColorDisplay.set_dimensions(40, 40);
-    currentColorDisplay.set_position(10, 20);
+    currentColorDisplay.set_dimensions(50, 50);
+    currentColorDisplay.set_position(55, 10);
 
     prevColorDisplay.set_dimensions(40, 40);
-    prevColorDisplay.set_position(50, 20);
+    prevColorDisplay.set_position(10, 10);
 
     nextColorDisplay.set_dimensions(40, 40);
-    nextColorDisplay.set_position(100, 20);
+    nextColorDisplay.set_position(110, 10);
 
     game_background.set_dimensions(550, 550);
     game_background.set_fill(whiteX);
@@ -97,6 +98,7 @@ void display_start() {
     for (int i = 0; i < message.length(); ++i) {
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, message[i]);
     }
+
 }
 
 void draw_text(string text, int r, int g, int b, int x, int y) {
@@ -109,25 +111,24 @@ void draw_text(string text, int r, int g, int b, int x, int y) {
 
 void display_game() {
     //This updates the map, in case we load a new save or clear everything
-    game_background.draw();
     thisMap.drawMap();
 
     saraf.draw();
 
     draw_text("press p for legend", 0, 0, 0, 300, 20);
 
-    currentColorDisplay.set_fill(currentColor);
+    currentColorDisplay.set_fill(saraf.getBrush().getColor());
     currentColorDisplay.draw();
     prevColorDisplay.set_fill(saraf.getBrush().getPrevColor());
     prevColorDisplay.draw();
-    draw_text("A", 1, 1, 1, 10, 30);
+    draw_text("A", 1, 1, 1, 20, 20);
     nextColorDisplay.set_fill(saraf.getBrush().getNextColor());
     nextColorDisplay.draw();
     draw_text("D", 1, 1, 1, 30, 20);
-    draw_text("W", 0, 0, 0, 96, 40);
+    draw_text("W", 0, 0, 0, 95, 100);
     //Change 120 if the alignment is off
-    draw_text("S", 0, 0, 0, 120, 40);
-    draw_text(saraf.getBrush().getBrushName(), 0, 0, 0, 100, 40);
+    draw_text("S", 0, 0, 0, 120, 100);
+    draw_text(saraf.getBrush().getBrushName(), 0, 0, 0, 100, 100);
 
 
     string message = "press p for legend";
@@ -144,13 +145,10 @@ void display_game() {
         }
     }
 
-    //If painting is toggled on, paint away!
-    if (saraf.getBrush().getPainting()) {
-        saraf.getBrush().draw(saraf.getLocation());
-    }
-
     //Move saraf again if he's got any momentum
     saraf.be();
+
+    thisMap.drawArt();
 
 }
 
@@ -175,12 +173,13 @@ void display() {
      * Draw here
      */
 
-    thisMap.drawMap();
-
     switch(screen) {
         case start: display_start();
             break;
-        case game: display_game();
+        case game:
+            game_background.draw();
+            thisMap.drawMap();
+            display_game();
             break;
     }
 
@@ -211,15 +210,18 @@ void kbd(unsigned char key, int x, int y)
     }
     //press a for previous color
     if (screen == game && key == 97) {
-        saraf.getBrush().changeColor(1);
+        saraf.changeColor(1);
+        cout << "you pressed A" << endl;
     }
     //press d for next color
     if (screen == game && key == 100) {
-        saraf.getBrush().changeColor(0);
+        saraf.changeColor(0);
     }
     //press space to toggle painting
     if (screen == game && key == 32) {
-        saraf.getBrush();
+        cout << saraf.getBrush().getPainting() << endl;
+        saraf.getBrush().togglePaint();
+        nextColorDisplay.set_fill(saraf.getBrush().getNextColor());
         Splatter(saraf.getcolor(), saraf.getLocation(), 10);
     }
     //press o to save your drawing
@@ -303,12 +305,12 @@ void mouse(int button, int state, int x, int y) {
 
     //if you click the next color on the display, it will move to the next one
     else if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && screen == game && nextColorDisplay.is_overlapping(x, y)) {
-        saraf.changeBrush(0);
+        saraf.changeColor(0);
     }
 
     //similarly, if you click the previous color, it will also switch
     else if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && screen == game && nextColorDisplay.is_overlapping(x, y)) {
-        saraf.changeBrush(1);
+        saraf.changeColor(1);
     }
 
 

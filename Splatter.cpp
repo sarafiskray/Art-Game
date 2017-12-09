@@ -31,8 +31,8 @@ int Splatter::getSize() const {
     return height;
 }
 
-void Splatter::drawSplatter() const {
-    glColor3f(fill.red, fill.green, fill.blue);
+void Splatter::drawSplatter() {
+    glColor3f(.5, .5, .5);
     glBegin(GL_QUADS);
     // top left corner
     glVertex2i(location.x, location.y);

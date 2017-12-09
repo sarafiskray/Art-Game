@@ -6,9 +6,10 @@
 #include "DottedBrush.h"
 #include <unistd.h>
 
-DottedBrush::DottedBrush(Map mapIn) {
+DottedBrush::DottedBrush(Map *mapIn) {
+    cout << "Made a new brush?" << endl;
     dottedSpeed = 1;
-    size = 2;
+    size = 10;
     painting = false;
     currentColorIndex = 0;
     brushName = "Dotted Brush";
@@ -29,6 +30,6 @@ void DottedBrush::draw(point location)  {
         thisSplatter = Splatter(getColor(), location, size);
         thisSplatter.drawSplatter();
         //Add the splatter to the background vector too
-        thisMap.addSplatter(thisSplatter);
+        thisMap->addSplatter(thisSplatter);
     }
 }

@@ -16,13 +16,13 @@ private:
 
 public:
 
-    DottedBrush(Map mapIn);
+    DottedBrush(Map *mapIn);
 
     int getDottedSpeed() const;
     void setDottedSpeed(int speedIn);
     void changeColor();
     void setMap(Map mapIn);
-    void draw(point location) override;
+    void draw(point location);
     DottedBrush(int ds);
 
 };

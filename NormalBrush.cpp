@@ -3,13 +3,14 @@
 //
 #include "NormalBrush.h"
 
-NormalBrush::NormalBrush(Map mapIn) {
+NormalBrush::NormalBrush(Map *mapIn) {
     size = 2;
     painting = false;
     currentColorIndex = 0;
     brushName = "Brush";
     thisMap = mapIn;
 
+    cout << "Norm constructed" << endl;
 }
 
 //Setters

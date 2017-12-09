@@ -110,16 +110,16 @@ bool Map::isBeneath(point p) {
 
 void Map::drawArt() const{
     for (Splatter splat : drawing) {
-        glColor3f(1, 1, 1);
+        glColor3f(splat.getFill().red, splat.getFill().green, splat.getFill().blue);
         glBegin(GL_QUADS);
         // top left corner
         glVertex2i(splat.getX(), splat.getY());
         // bottom left corner
-        glVertex2i(splat.getX(), splat.getY()+5);
+        glVertex2i(splat.getX(), splat.getY()+splat.getSize());
         // bottom right corner
-        glVertex2i(splat.getX()+5, splat.getY()+5);
+        glVertex2i(splat.getX()+splat.getSize(), splat.getY()+splat.getSize());
         // top right corner
-        glVertex2i(splat.getX()+5, splat.getY());
+        glVertex2i(splat.getX()+splat.getSize(), splat.getY());
         glEnd();
     }
 }

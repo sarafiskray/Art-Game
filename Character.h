@@ -22,12 +22,12 @@
 class Character {
 public:
     //Map the character is operating within
-    Map thisMap;
+    Map* thisMap;
     point location;
     color myColor;
 
     //constructors
-    Character(Map mapIn);
+    Character(Map *mapIn);
 
     Character(point p);
     Character(color f, point p);
@@ -107,6 +107,8 @@ public:
 
     void leftPress();
     void rightPress();
+
+    void changeColor(int choice);
     
 
 private:
