@@ -111,13 +111,14 @@ void Character::be() {
 
     //If the player has upward momentum, it moves up proportional to the momentum and then decreases that
     if (verticalMomentum > 0) {
-        location.y += (verticalMomentum + 1);
+        location.y -= (verticalMomentum * 4);
         verticalMomentum--;
     }
         //if there is nothing underneath the character, then it calls the fall function
     else {
         if (!thisMap.isBeneath({location.x, location.y + 20})) {
             fall();
+            verticalMomentum--;
         }
         else {
             verticalMomentum = 1;
@@ -141,7 +142,7 @@ void Character::leftPress() {
 
 void Character::moveLeft() {
     //So one doesn't go off the screen
-    if (!(location.x == 0) && thisMap.isBeneath({location.x, location.y + 20}) && (location.x - (horizontalMomentum * 2)) > 0) {
+    if (!(location.x == 0) &&  (location.x - (horizontalMomentum * 2)) > 0) {
         location.x -= -(horizontalMomentum) * 2;
     }
 
@@ -156,7 +157,7 @@ void Character::rightPress() {
 
 void Character::moveRight() {
     //So one doesn't go off the screen
-    if (!(location.x == 500) && thisMap.isBeneath({location.x, location.y + 20}) && (location.x + (horizontalMomentum +2)) < 500) {
+    if (!(location.x == 500) &&  (location.x + (horizontalMomentum +2)) < 500) {
         location.x += (horizontalMomentum) * 2;
     }
 
@@ -167,8 +168,7 @@ void Character::moveRight() {
 void Character::jump() {
     //Only works if you have something to jump off of
     if (thisMap.isBeneath({location.x, location.y+20})) {
-        verticalMomentum += 4;
-        location.y -= verticalMomentum * 3;
+        verticalMomentum += 5;
 
         //Character actually can go above the stage, so no special case
         cout << "Jumping! X: " << location.x << " Y: " << location.y << endl;
@@ -178,17 +178,15 @@ void Character::jump() {
 
 void Character::fall() {
 
-    verticalMomentum--;
     location.y += 1 * -verticalMomentum;
 
-    if (verticalMomentum < 4) {
-        verticalMomentum = 4;
+    if (verticalMomentum < -4) {
+        verticalMomentum = -4;
     }
 
 
     //If it falls through the floor, then put it back in the center. Shouldn't happen anyway
     if (location.y > 475) {
-        location.x = 50;
         location.y = 475;
         verticalMomentum = 0;
     }
