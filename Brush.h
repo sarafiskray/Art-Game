@@ -28,7 +28,7 @@ protected:
     //Name for brush
     string brushName;
     //current color
-    color currentColor = colorPalette[0];
+    color currentColor;
     int currentColorIndex;
     Map thisMap;
 

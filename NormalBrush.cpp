@@ -7,7 +7,6 @@ NormalBrush::NormalBrush(Map mapIn) {
     size = 2;
     painting = false;
     currentColorIndex = 0;
-    currentColor = colorPalette[currentColorIndex];
     brushName = "Brush";
     thisMap = mapIn;
 

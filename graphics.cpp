@@ -63,10 +63,10 @@ void init() {
     currentColorDisplay.set_dimensions(40, 40);
     currentColorDisplay.set_position(10, 20);
 
-    prevColorDisplay.set_dimensions(30, 30);
+    prevColorDisplay.set_dimensions(40, 40);
     prevColorDisplay.set_position(50, 20);
 
-    nextColorDisplay.set_dimensions(30, 30);
+    nextColorDisplay.set_dimensions(40, 40);
     nextColorDisplay.set_position(100, 20);
 
     game_background.set_dimensions(550, 550);
