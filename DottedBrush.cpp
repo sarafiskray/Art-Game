@@ -5,12 +5,13 @@
 #include "Brush.h"
 #include "DottedBrush.h"
 
-DottedBrush::DottedBrush() {
+DottedBrush::DottedBrush(Map mapIn) {
     size = 2;
     painting = false;
     currentColorIndex = 0;
     currentColor = colorPalette[currentColorIndex];
     brushName = "Dotted Brush";
+    thisMap = mapIn;
 };
 
 int DottedBrush::getDottedSpeed() const {

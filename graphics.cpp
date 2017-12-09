@@ -60,7 +60,7 @@ void init() {
 
     displayLegend = false;
 
-    currentColorDisplay.set_dimensions(30, 30);
+    currentColorDisplay.set_dimensions(40, 40);
     currentColorDisplay.set_position(10, 20);
 
     prevColorDisplay.set_dimensions(30, 30);
