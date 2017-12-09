@@ -9,7 +9,6 @@ DottedBrush::DottedBrush(Map mapIn) {
     size = 2;
     painting = false;
     currentColorIndex = 0;
-    currentColor = colorPalette[currentColorIndex];
     brushName = "Dotted Brush";
     thisMap = mapIn;
 };

@@ -116,7 +116,7 @@ void Character::be() {
     }
         //if there is nothing underneath the character, then it calls the fall function
     else {
-        if (!thisMap.isBeneath(location)) {
+        if (!thisMap.isBeneath({location.x, location.y + 20})) {
             fall();
         }
         else {
@@ -125,7 +125,7 @@ void Character::be() {
     }
 
     //If the character is landed, it has no vertical momentum
-    if (thisMap.isBeneath(location))  {
+    if (thisMap.isBeneath({location.x, location.y + 20}))  {
         verticalMomentum = 0;
     }
 
@@ -141,7 +141,7 @@ void Character::leftPress() {
 
 void Character::moveLeft() {
     //So one doesn't go off the screen
-    if (!(location.x == 0) && thisMap.isBeneath({location.x, location.y + 20}) && (location.x - (horizontalMomentum +2)) > 0) {
+    if (!(location.x == 0) && thisMap.isBeneath({location.x, location.y + 20}) && (location.x - (horizontalMomentum * 2)) > 0) {
         location.x -= -(horizontalMomentum) * 2;
     }
 
@@ -194,7 +194,6 @@ void Character::fall() {
     }
 
     cout << "Falling! X: " << location.x << " Y: " << location.y << endl;
-
 
 }
 
