@@ -17,7 +17,7 @@ Map::Map() {
     //Makes platforms a 100x100, or NUMCOLUMNxNUMROW
     platforms.resize(NUMCOLUMN, vector<int>(NUMROW, 0));
     drawing.resize(0);
-    //Make the bottom row of platforms full, at least
+    //Make the bottom row full, at least
     for (int i = 0; i < NUMCOLUMN; i++ ) {
         platforms[i][NUMROW-5] = 1;
     }
@@ -105,7 +105,6 @@ void Map::clearDrawing() {
 }
 
 bool Map::isBeneath(point p) {
-    cout << platforms[p.x][p.y] << endl;
     return (platforms[p.x][p.y] == 1);
 }
 

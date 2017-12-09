@@ -19,4 +19,4 @@ extern color grayX = {.66, .66, .66};
 extern color blackX = {0, 0, 0};
 extern color whiteX = {1, 1, 1};
 
-vector<color> colorPalette = {indigoX, blueX, cyanX, greenX, yellowX, goldX, orangeX, pinkX, redX, maroonX, brownX, grayX, blackX, whiteX};
+extern vector<color> colorPalette = {indigoX, blueX, cyanX, greenX, yellowX, goldX, orangeX, pinkX, redX, maroonX, brownX, grayX, blackX, whiteX};
