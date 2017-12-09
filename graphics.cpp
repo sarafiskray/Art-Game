@@ -17,8 +17,9 @@ Rectangulo start_background, playButton;
 color playButtonText, playButtonColor;
 
 //Game screen elements
-Character saraf;
 Map thisMap;
+Character saraf = Character(thisMap);
+Rectangulo game_background;
 
 //The all important legend
 Rectangulo legend;
@@ -34,12 +35,15 @@ string legend8 = "Press Q to decrease brush size, E to increase";
 string legend9 = "Press SPACE to toggle drawing";
 vector<string> legendTexts = {legendHeader, legend2, legend3, legend4, legend5, legend6, legend7, legend8, legend9};
 
-color currentColor = saraf.getBrush().getColor();
+color currentColor;
 Rectangulo currentColorDisplay, prevColorDisplay, nextColorDisplay;
 
 
 
 void init() {
+
+    currentColor = saraf.getBrush().getColor();
+
     width = 500;
     height = 500;
 
@@ -47,7 +51,7 @@ void init() {
     start_background.set_fill(1, 1, 1);
     start_background.set_dimensions(520, 520);
 
-    Rectangulo r1;
+
     playButton.set_position(300, 300);
     playButton.set_fill(0, 0, 0);
     playButton.set_dimensions(100, 50);
@@ -56,14 +60,17 @@ void init() {
 
     displayLegend = false;
 
-    currentColorDisplay.set_dimensions(15, 15);
-    currentColorDisplay.set_position(100, 20);
+    currentColorDisplay.set_dimensions(30, 30);
+    currentColorDisplay.set_position(10, 20);
 
-    prevColorDisplay.set_dimensions(12, 12);
-    prevColorDisplay.set_position(86, 22);
+    prevColorDisplay.set_dimensions(30, 30);
+    prevColorDisplay.set_position(50, 20);
 
-    nextColorDisplay.set_dimensions(12, 12);
-    nextColorDisplay.set_position(118, 22);
+    nextColorDisplay.set_dimensions(30, 30);
+    nextColorDisplay.set_position(100, 20);
+
+    game_background.set_dimensions(550, 550);
+    game_background.set_fill(whiteX);
 }
 
 /* Initialize OpenGL Graphics */
@@ -82,6 +89,8 @@ void display_start() {
     for (int i = 0; i < message.length(); ++i) {
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, message[i]);
     }
+    playButton.draw();
+
     message = "play";
     glColor3f(playButtonText.red, playButtonText.blue, playButtonText.green);
     glRasterPos2i(320, 320);
@@ -100,6 +109,7 @@ void draw_text(string text, int r, int g, int b, int x, int y) {
 
 void display_game() {
     //This updates the map, in case we load a new save or clear everything
+    game_background.draw();
     thisMap.drawMap();
 
     saraf.draw();
@@ -108,10 +118,10 @@ void display_game() {
     currentColorDisplay.draw();
     prevColorDisplay.set_fill(saraf.getBrush().getPrevColor());
     prevColorDisplay.draw();
-    draw_text("A", 1, 1, 1, 87, 23);
+    draw_text("A", 1, 1, 1, 10, 30);
     nextColorDisplay.set_fill(saraf.getBrush().getNextColor());
     nextColorDisplay.draw();
-    draw_text("D", 1, 1, 1, 119, 23);
+    draw_text("D", 1, 1, 1, 30, 20);
     draw_text("W", 0, 0, 0, 96, 40);
     //Change 120 if the alignment is off
     draw_text("S", 0, 0, 0, 120, 40);
@@ -121,14 +131,14 @@ void display_game() {
     string message = "press p for legend";
 
     if (displayLegend) {
-        legend.set_position(400, 20);
-        legend.set_dimensions(80, 100);
+        legend.set_position(300, 20);
+        legend.set_dimensions(190, 200);
         legend.set_fill(blackX);
         legend.draw();
 
         int yLoc = 30;
         for (string text : legendTexts) {
-            draw_text(text, 1, 1, 1, 410, yLoc += 20);
+            draw_text(text, 1, 1, 1, 310, yLoc += 20);
         }
     }
 
@@ -207,7 +217,8 @@ void kbd(unsigned char key, int x, int y)
     }
     //press space to toggle painting
     if (screen == game && key == 32) {
-        saraf.getBrush().togglePaint();
+        saraf.getBrush();
+        Splatter(saraf.getcolor(), saraf.getLocation(), 10);
     }
     //press o to save your drawing
     if (screen == game && key == 111) {
@@ -316,7 +327,7 @@ int graphicsPlay(int argc, char** argv) {
     glutInitWindowSize((int)width, (int)height);
     glutInitWindowPosition(100, 200); // Position the window's initial top-left corner
     /* create the window and store the handle to it */
-    wd = glutCreateWindow("Fun with Drawing!" /* title */ );
+    wd = glutCreateWindow("A R T" /* title */ );
 
     // Register callback handler for window re-paint event
     glutDisplayFunc(display);
