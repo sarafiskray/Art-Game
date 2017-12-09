@@ -60,14 +60,14 @@ void init() {
 
     displayLegend = false;
 
-    currentColorDisplay.set_dimensions(15, 15);
-    currentColorDisplay.set_position(100, 20);
+    currentColorDisplay.set_dimensions(30, 30);
+    currentColorDisplay.set_position(10, 20);
 
-    prevColorDisplay.set_dimensions(12, 12);
-    prevColorDisplay.set_position(86, 22);
+    prevColorDisplay.set_dimensions(30, 30);
+    prevColorDisplay.set_position(50, 20);
 
-    nextColorDisplay.set_dimensions(12, 12);
-    nextColorDisplay.set_position(118, 22);
+    nextColorDisplay.set_dimensions(30, 30);
+    nextColorDisplay.set_position(100, 20);
 
     game_background.set_dimensions(550, 550);
     game_background.set_fill(whiteX);
@@ -118,10 +118,10 @@ void display_game() {
     currentColorDisplay.draw();
     prevColorDisplay.set_fill(saraf.getBrush().getPrevColor());
     prevColorDisplay.draw();
-    draw_text("A", 1, 1, 1, 87, 23);
+    draw_text("A", 1, 1, 1, 10, 30);
     nextColorDisplay.set_fill(saraf.getBrush().getNextColor());
     nextColorDisplay.draw();
-    draw_text("D", 1, 1, 1, 119, 23);
+    draw_text("D", 1, 1, 1, 30, 20);
     draw_text("W", 0, 0, 0, 96, 40);
     //Change 120 if the alignment is off
     draw_text("S", 0, 0, 0, 120, 40);
@@ -217,7 +217,8 @@ void kbd(unsigned char key, int x, int y)
     }
     //press space to toggle painting
     if (screen == game && key == 32) {
-        saraf.getBrush().togglePaint();
+        saraf.getBrush();
+        Splatter(saraf.getcolor(), saraf.getLocation(), 10);
     }
     //press o to save your drawing
     if (screen == game && key == 111) {
