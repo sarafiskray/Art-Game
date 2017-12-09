@@ -20,7 +20,6 @@ public:
     void setDottedSpeed(int speedIn);
     void changeColor();
     void setMap(Map mapIn);
-    DottedBrush(Map mapIn);
     DottedBrush(int ds);
 
 };
