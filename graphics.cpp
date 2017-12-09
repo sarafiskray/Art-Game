@@ -281,6 +281,10 @@ void cursor(int x, int y) {
             playButton.set_fill(whiteX);
             playButtonText = blackX;
         }
+        else if (!playButton.is_overlapping(x, y)) {
+            playButton.set_fill(blackX);
+            playButtonText = whiteX;
+        }
     }
 
 

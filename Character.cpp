@@ -7,7 +7,7 @@
 #include "DottedBrush.h"
 
 
-Character::Character() {
+Character::Character(Map mapIn) {
     fill = {0, 0, 0};
     width = 2;
     height = 2;
@@ -24,7 +24,7 @@ Character::Character() {
     location.x = 60;
     location.y = 60;
 
-    //thisMap = new Map();
+    thisMap = mapIn;
 };
 
 Character::Character(color f, int xIn, int yIn) {

@@ -27,7 +27,7 @@ public:
     color myColor;
 
     //constructors
-    Character();
+    Character(Map mapIn);
 
     Character(point p);
     Character(color f, point p);
