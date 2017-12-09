@@ -137,6 +137,9 @@ void Character::be() {
 
 void Character::leftPress() {
     horizontalMomentum -= 3;
+    if (horizontalMomentum < -5) {
+        horizontalMomentum = -5;
+    }
     moveLeft();
 }
 
@@ -152,6 +155,9 @@ void Character::moveLeft() {
 
 void Character::rightPress() {
     horizontalMomentum += 3;
+    if (horizontalMomentum > 5) {
+        horizontalMomentum = 5;
+    }
     moveRight();
 }
 
@@ -168,7 +174,7 @@ void Character::moveRight() {
 void Character::jump() {
     //Only works if you have something to jump off of
     if (thisMap.isBeneath({location.x, location.y+20})) {
-        verticalMomentum += 5;
+        verticalMomentum += 10;
 
         //Character actually can go above the stage, so no special case
         cout << "Jumping! X: " << location.x << " Y: " << location.y << endl;
