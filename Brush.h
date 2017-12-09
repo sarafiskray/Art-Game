@@ -67,7 +67,7 @@ public:
      * Modifies: thisSplatter
      * Effects: changes thisSplatter to something dependent on current location
      */
-    void draw(point location);
+    virtual void draw(point location);
 
     void changeSize(int choice);
 
