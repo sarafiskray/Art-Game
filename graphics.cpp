@@ -114,6 +114,8 @@ void display_game() {
 
     saraf.draw();
 
+    draw_text("press p for legend", 0, 0, 0, 300, 20);
+
     currentColorDisplay.set_fill(currentColor);
     currentColorDisplay.draw();
     prevColorDisplay.set_fill(saraf.getBrush().getPrevColor());
