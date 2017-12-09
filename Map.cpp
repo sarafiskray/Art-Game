@@ -65,6 +65,8 @@ void Map::loadDrawing() {
     ifstream fileIn(mapFile);
 
     if (fileIn) {
+        drawing.clear();
+
         cout << "File opened successfully." << endl;
 
         int r, g, b, size;

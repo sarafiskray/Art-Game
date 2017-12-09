@@ -84,6 +84,10 @@ color Brush::getColor() const {
     return currentColor;
 }
 
+int Brush::getSize() const {
+    return size;
+}
+
 void Brush::changeSize(int choice) {
     if (choice == 0) {
         size += 5;
@@ -96,10 +100,13 @@ void Brush::changeSize(int choice) {
 }
 
 void Brush::drawHere(const point location) {
+    if(painting) {
+        thisSplatter = Splatter(getColor(), location, getSize());
 
-    thisSplatter = Splatter(Brush::getColor(), location, size);
-    thisSplatter.drawSplatter();
-    thisMap->addSplatter(thisSplatter);
-    cout << "Splatter placed at " << location.x << "," << location.y << endl;
+        thisMap->addSplatter(thisSplatter);
+        cout << "Splatter placed at " << location.x << "," << location.y << endl;
+        cout << "Size is: " << size << endl;
+    }
+
 
 }

@@ -35,6 +35,8 @@ protected:
 
 
 public:
+
+    int getSize() const;
     bool getPainting() const;
 
     color getColor() const;

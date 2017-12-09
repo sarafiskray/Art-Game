@@ -22,7 +22,7 @@ public:
     void setDottedSpeed(int speedIn);
     void changeColor();
     void setMap(Map mapIn);
-    void draw(point location);
+    void drawHere(point location) override;
     DottedBrush(int ds);
 
 };

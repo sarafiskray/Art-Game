@@ -17,7 +17,7 @@ Character::Character(Map *mapIn) {
     brushes.push_back(move(norm));
     //currentBrush = brushes[0];
     brushSelection = 0;
-    NormalBrush normie(mapIn);
+
 
     horizontalMomentum = 0;
     verticalMomentum = 0;
@@ -228,8 +228,8 @@ void Character::changeBrush(int choice) {
     //cout << "New Brush: " << brushes[brushSelection]->getBrushName() << endl;
 }
 
-Brush Character::getBrush() const {
-    return *(brushes[brushSelection]);
+Brush& Character::getBrush() const {
+    return *brushes[brushSelection];
 
 }
 

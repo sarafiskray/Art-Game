@@ -24,11 +24,10 @@ void DottedBrush::setDottedSpeed(int speedIn) {
     dottedSpeed = speedIn;
 }
 
-void DottedBrush::draw(point location)  {
+void DottedBrush::drawHere(point location)   {
     if(painting) {
         usleep(1000 * dottedSpeed);
         thisSplatter = Splatter(getColor(), location, size);
-        thisSplatter.drawSplatter();
         //Add the splatter to the background vector too
         thisMap->addSplatter(thisSplatter);
     }
