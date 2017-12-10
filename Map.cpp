@@ -41,7 +41,7 @@ void Map::addSplatter(Splatter splatIn) {
 }
 
 void Map::saveDrawing(){
-    ofstream fileIn(mapFile, ios::app);
+    ofstream fileIn(mapFile);
 
     if (fileIn) {
         cout << "File opened successfully" << endl;

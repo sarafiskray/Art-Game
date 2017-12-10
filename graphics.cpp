@@ -211,7 +211,7 @@ void kbd(unsigned char key, int x, int y)
     if (screen == game && key == 97) {
         saraf.changeColor(1);
     }
-    
+
     //press d for next color
     if (screen == game && key == 100) {
         saraf.changeColor(0);
