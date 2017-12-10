@@ -16,13 +16,6 @@ DottedBrush::DottedBrush(Map *mapIn) {
     thisMap = mapIn;
 };
 
-int DottedBrush::getDottedSpeed() const {
-    return dottedSpeed;
-}
-
-void DottedBrush::setDottedSpeed(int speedIn) {
-    dottedSpeed = speedIn;
-}
 
 void DottedBrush::drawHere(point location)   {
     if(painting) {

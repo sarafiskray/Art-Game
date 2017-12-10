@@ -31,19 +31,6 @@ int Splatter::getSize() const {
     return height;
 }
 
-void Splatter::drawSplatter() {
-    glColor3f(.5, .5, .5);
-    glBegin(GL_QUADS);
-    // top left corner
-    glVertex2i(location.x, location.y);
-    // bottom left corner
-    glVertex2i(location.x, location.y + height);
-    // bottom right corner
-    glVertex2i(location.x + width, location.y + height);
-    // top right corner
-    glVertex2i(location.x + width, location.y);
-    glEnd();
-}
 
 Splatter::Splatter() {}
 

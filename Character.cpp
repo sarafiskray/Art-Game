@@ -3,7 +3,6 @@
 //
 
 #include "Character.h"
-#include "NormalBrush.h"
 #include "Eraser.h"
 #include "DottedBrush.h"
 

@@ -31,7 +31,7 @@ string legend3 = "Press O to save the your drawing";
 string legend4 = "Press I to load your last drawing";
 string legend5 = "Press U to clear your drawing";
 string legend6 = "Press A or D to cycle through brush colors";
-string legend7 = "Press W or S to cycle through your brushes";
+string legend7 = "Press W or S to cycle between brush and eraser";
 string legend8 = "Press Q to decrease brush size, E to increase";
 string legend9 = "Press SPACE to toggle drawing";
 vector<string> legendTexts = {legendHeader, legend2, legend3, legend4, legend5, legend6, legend7, legend8, legend9};
@@ -121,14 +121,9 @@ void display_game() {
     currentColorDisplay.draw();
     prevColorDisplay.set_fill(saraf.getBrush().getPrevColor());
     prevColorDisplay.draw();
-    draw_text("A", 1, 1, 1, 20, 20);
     nextColorDisplay.set_fill(saraf.getBrush().getNextColor());
     nextColorDisplay.draw();
-    draw_text("D", 1, 1, 1, 30, 20);
-    draw_text("W", 0, 0, 0, 95, 100);
-    //Change 120 if the alignment is off
-    draw_text("S", 0, 0, 0, 120, 100);
-    draw_text(saraf.getBrush().getBrushName(), 0, 0, 0, 100, 100);
+
 
 
     string message = "press p for legend";

@@ -22,16 +22,22 @@ Map::Map() {
         platforms[i][NUMROW-5] = 1;
     }
 
+    //create a cetnral platform
+    for (int x = 200; x < 300; x++) {
+        platforms[x][300] = 1;
+    }
+
+    for (int xx = 75; xx < 175; xx++) {
+        platforms[xx][100] = 1;
+        platforms[platforms.size() - xx][100] = 1;
+    }
+
     savedDrawing = false;
 
 }
 
 void Map::addSplatter(Splatter splatIn) {
     drawing.push_back(splatIn);
-}
-
-void Map::setSaved() {
-    savedDrawing = !savedDrawing;
 }
 
 void Map::saveDrawing(){

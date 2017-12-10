@@ -1,3 +1,4 @@
+/*
 //
 // Created by Joshua on 11/17/2017.
 //
@@ -30,3 +31,4 @@ color NormalBrush::getColor() const {
 int NormalBrush::getSize() const {
     return size;
 }
+*/
