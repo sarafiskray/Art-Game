@@ -13,6 +13,10 @@ public:
     Eraser(Map *mapIn);
     void changeColor(int choice) override;
     void drawHere(const point location) override;
+    color getColor() const override;
+    color getNextColor() const override;
+    color getPrevColor() const override;
+
 
 };
 

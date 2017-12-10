@@ -72,7 +72,7 @@ color Brush::getPrevColor() const {
 }
 
 color Brush::getNextColor() const {
-    if (currentColorIndex == colorPalette.size()) {
+    if (currentColorIndex == colorPalette.size() - 1) {
         return colorPalette[0];
     }
     else {

@@ -147,7 +147,7 @@ void Character::leftPress() {
 
 void Character::moveLeft() {
     //So one doesn't go off the screen
-    if (!(location.x == 0) &&  (location.x - (horizontalMomentum * 2)) > 0) {
+    if (!(location.x <= 10) &&  (location.x - (horizontalMomentum * 2)) > 0) {
         location.x -= -(horizontalMomentum) * 2;
     }
 
@@ -166,7 +166,7 @@ void Character::rightPress() {
 
 void Character::moveRight() {
     //So one doesn't go off the screen
-    if (!(location.x == 500) &&  (location.x + (horizontalMomentum +2)) < 500) {
+    if (!(location.x >= 474) &&  (location.x + (horizontalMomentum +2)) < 500) {
         location.x += (horizontalMomentum) * 2;
     }
 
