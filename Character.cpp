@@ -4,6 +4,7 @@
 
 #include "Character.h"
 #include "NormalBrush.h"
+#include "Eraser.h"
 #include "DottedBrush.h"
 
 
@@ -11,10 +12,12 @@ Character::Character(Map *mapIn) {
     fill = {0, 0, 0};
     width = 20;
     height = 20;
-    unique_ptr<NormalBrush> norm (new NormalBrush(mapIn));
+    //unique_ptr<NormalBrush> norm (new NormalBrush(mapIn));
     unique_ptr<DottedBrush> dot (new DottedBrush{mapIn});
+    unique_ptr<Eraser> erase (new Eraser{mapIn});
     brushes.push_back(move(dot));
-    brushes.push_back(move(norm));
+    brushes.push_back(move(erase));
+    //brushes.push_back(move(norm));
     //currentBrush = brushes[0];
     brushSelection = 0;
 

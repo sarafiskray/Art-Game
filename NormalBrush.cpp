@@ -4,7 +4,7 @@
 #include "NormalBrush.h"
 
 NormalBrush::NormalBrush(Map *mapIn) {
-    size = 1;
+    size = 10;
     painting = false;
     currentColorIndex = 0;
     brushName = "Brush";

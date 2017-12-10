@@ -17,6 +17,8 @@ extern color maroonX = {.502, 0, 0};
 extern color brownX = {.627, .321, .176};
 extern color grayX = {.66, .66, .66};
 extern color blackX = {0, 0, 0};
+extern color darkGreenX = {.05, .22, .05};
 extern color whiteX = {1, 1, 1};
 
-extern vector<color> colorPalette = {indigoX, blueX, cyanX, greenX, yellowX, goldX, orangeX, pinkX, redX, maroonX, brownX, grayX, blackX, whiteX};
+extern vector<color> colorPalette = {indigoX, blueX, cyanX, greenX, yellowX, goldX, orangeX, pinkX, redX, maroonX, brownX, grayX, darkGreenX, blackX}; // , whiteX};
+//extern color eraserColor = whiteX;

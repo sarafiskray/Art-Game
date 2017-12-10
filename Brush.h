@@ -70,7 +70,7 @@ public:
      * Modifies: thisSplatter
      * Effects: changes thisSplatter to something dependent on current location
      */
-    virtual void drawHere(const point location);
+    virtual void drawHere(const point location) = 0;
 
     void changeSize(int choice);
 
