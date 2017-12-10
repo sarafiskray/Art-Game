@@ -28,8 +28,8 @@ Map::Map() {
     }
 
     for (int xx = 75; xx < 175; xx++) {
-        platforms[xx][100] = 1;
-        platforms[platforms.size() - xx][100] = 1;
+        platforms[xx][200] = 1;
+        platforms[platforms.size() - xx][200] = 1;
     }
 
     savedDrawing = false;

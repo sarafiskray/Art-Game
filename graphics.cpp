@@ -117,6 +117,7 @@ void display_game() {
 
     draw_text("press p for legend", 0, 0, 0, 300, 20);
 
+    //Set colors of the top left displays
     currentColorDisplay.set_fill(saraf.getBrush().getColor());
     currentColorDisplay.draw();
     prevColorDisplay.set_fill(saraf.getBrush().getPrevColor());
@@ -193,20 +194,22 @@ void kbd(unsigned char key, int x, int y)
     //Press the p button to toggle the legend
     if (screen == game && key == 112) {
         displayLegend = !displayLegend;
+        cout << "p was pressed" << endl;
     }
 
     //press w to change brush upwards
     if (screen == game && key == 119){
+        cout << "w was pressed" << endl;
         saraf.changeBrush(0);
     }
     //press s to change brush downward
     if (screen == game && key == 115) {
+        cout << "s was pressed" << endl;
         saraf.changeBrush(1);
     }
     //press a for previous color
     if (screen == game && key == 97) {
         saraf.changeColor(1);
-        cout << "you pressed A" << endl;
     }
     //press d for next color
     if (screen == game && key == 100) {
@@ -214,10 +217,7 @@ void kbd(unsigned char key, int x, int y)
     }
     //press space to toggle painting
     if (screen == game && key == 32) {
-        cout << saraf.getBrush().getPainting() << endl;
         saraf.getBrush().togglePaint();
-        nextColorDisplay.set_fill(saraf.getBrush().getNextColor());
-        Splatter(saraf.getcolor(), saraf.getLocation(), 10);
     }
     //press o to save your drawing
     if (screen == game && key == 111) {

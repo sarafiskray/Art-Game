@@ -20,7 +20,6 @@ Character::Character(Map *mapIn) {
     //currentBrush = brushes[0];
     brushSelection = 0;
 
-
     horizontalMomentum = 0;
     verticalMomentum = 0;
 

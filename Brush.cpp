@@ -81,7 +81,7 @@ color Brush::getNextColor() const {
 }
 
 color Brush::getColor() const {
-    return currentColor;
+    return colorPalette[currentColorIndex];
 }
 
 int Brush::getSize() const {
