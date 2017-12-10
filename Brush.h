@@ -30,11 +30,15 @@ protected:
     string brushName;
     //current color
     color currentColor;
+    //how to figure out which is the current color, b/c currentColor wasn't working well
     int currentColorIndex;
+    //pointer to the Map being edited
     Map *thisMap;
 
 
 public:
+
+    //Getters
 
     int getSize() const;
     bool getPainting() const;
@@ -44,7 +48,9 @@ public:
     color getNextColor() const;
 
     string getBrushName() const;
-    //No setBrush, brush is set by changeBrush
+    //No setBrushName, they're pre-set
+
+    //No setters, because they're almost all toggles anyway
 
     /*
      * togglePaint
@@ -65,13 +71,19 @@ public:
     virtual void changeColor(int choice);
 
     /*
-     * draw
+     * drawHere
      * Requires: point location, location for splatter to go
      * Modifies: thisSplatter
      * Effects: changes thisSplatter to something dependent on current location
      */
     virtual void drawHere(const point location) = 0;
 
+    /*
+     * changeSize
+     * Requires: int choice, for changing size up vs down
+     * Modifes: Brush::size
+     * Effects: changes size up or down by 5
+     */
     void changeSize(int choice);
 
 };

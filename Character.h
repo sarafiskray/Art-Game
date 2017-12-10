@@ -20,17 +20,34 @@
 //We are not racist
 
 class Character {
-public:
-    //Map the character is operating within
-    Map* thisMap;
-    point location;
-    color myColor;
+private:
+    //Character's fill color
+    color fill;
+    double width;
+    double height;
+    //Brushes vector, for containing brushes being used
+    vector<unique_ptr<Brush>> brushes;
 
+    //Two Momentums for controlling how the character responds and keeps moving after the player is not still running
+    int horizontalMomentum;
+    int verticalMomentum;
+
+    //An index of the current brush, for use in the changeBrush method
+    int brushSelection;
+
+    //Map the character is operating within
+    Map *thisMap;
+    //Character's location
+    point location;
+
+public:
     //constructors
     Character(Map *mapIn);
 
     Character(point p);
+
     Character(color f, point p);
+
     Character(color f, int xIn, int yIn);
 
 
@@ -38,15 +55,14 @@ public:
 
     //Returns struct Point with X and Y
     point getLocation() const;
-    //Returns x of location
     int getX() const;
-    //Returns y of location
     int getY() const;
     //gets color of character
     color getcolor() const;
     int getHMomentum() const;
     int getVMomentum() const;
-    Brush& getBrush() const;
+    //Gets a reference to the current brush
+    Brush &getBrush() const;
 
     //setters
     //No setBrush because that is where we use changeBrush
@@ -57,8 +73,6 @@ public:
     void setHMomentum(int x);
     void setVMomentum(int x);
 
-
-
     //Methods
     /*
      * be
@@ -67,6 +81,7 @@ public:
      * Effects: A method for the player to keep moving even if a direction isn't pressed, based on momentum
      */
     void be();
+
     /*
      * changeBrush
      * Requires: Nothing
@@ -74,6 +89,7 @@ public:
      * Effects: currentBrush changes to the next in the vector. brushSelection iterates up, or back to 0 if it reaches brushes.size()
      */
     void changeBrush(int choice);
+
     /*
      * moveLeft
      * Requires: Nothing
@@ -81,6 +97,7 @@ public:
      * Effects: moves the character left by an amount determined by character's momentum, increases horizontalMomentum
      */
     void moveLeft();
+
     /*
      * moveRight
      * Requires: Nothing
@@ -88,6 +105,7 @@ public:
      * Effects: moves the character right by an amount determined by its momentum, increases horizontalMomentum
      */
     void moveRight();
+
     /*
      * jump
      * Requires: Nothing, but requires thisMap.isBeneath() to return true to actually jump. Otherwise, what are you jumping off of?
@@ -95,6 +113,7 @@ public:
      * Effects: moves the character up by an amount determined by its momentum, increases verticalMomentum
      */
     void jump();
+
     /*
      * fall
      * Requires: Nothing (but fully calling it requires thisMap.isBeneath() to return false. Can't fall through things
@@ -103,33 +122,38 @@ public:
      */
     void fall();
 
+    /*
+     * draw
+     * Requires: Nothing
+     * Modifies: Nothing
+     * Effects: Draws the character in graphics
+     */
     void draw() const;
 
+    /*
+     * leftPress
+     * Requires: Nothing
+     * Modifies: horizontalMomentum
+     * Effects: Calls moveleft and subtracts from horizontalMomentum, so that moveLeft can respond to momentum instead of increase it as well
+     */
     void leftPress();
+
+    /*
+     * rightPress
+     * Requies: Nothing
+     * Modifies: horizontalMomentum
+     * Effects: Calls moveRight and subtracts from horizontalMomentum, so that moveRight can respond to momentum instead of increase it as well
+     */
     void rightPress();
 
+    /*
+     * changeColor
+     * Requires: int choice
+     * Modifies: Nothing
+     * Effects: call's brush's changeColor(choice)
+     */
     void changeColor(int choice);
-    
-
-private:
-    color fill;
-    int speed;
-    double width;
-    double height;
-    //Brush currentBrush;
-    vector<unique_ptr<Brush>> brushes;
-
-    //Two Momentums for controlling how the character responds and keeps moving after the player is not still running
-    int horizontalMomentum;
-    int verticalMomentum;
-
-
-
-    //An index of the current brush, for use in the changeBrush method
-    int brushSelection;
-
 
 };
-
 
 #endif //THE_STATISTICS_CHARACTER_H

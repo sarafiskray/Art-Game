@@ -22,9 +22,11 @@ private:
     //name of file
     string mapFile = "mapFile.txt";
 
+    //SIZE OF THE MAP
     int NUMROW = 500;
     int NUMCOLUMN = 500;
 
+    //Whether or not a drawing is currently saved and accessible
     bool savedDrawing;
 
 public:
@@ -32,8 +34,7 @@ public:
     //constructor, makes vectors 100x100 and initializes the map a bit
     Map();
 
-    bool getSaved() const;
-    void setSaved();
+    //Methods
     void addSplatter(Splatter splatIn);
     /*
      * saveDrawing

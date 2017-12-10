@@ -15,23 +15,12 @@
 
 class NormalBrush : public Brush {
 private:
-    int size;
-    
+
 public:
 
     //Default constructor creates a brush of medium size
     //Everyone will start with a normal brush
     NormalBrush(Map *mapIn);
-
-    //Setters
-    void setColor(color colorIn);
-
-    void setSize(int sizeIn);
-
-    //Getters
-    color getColor() const;
-
-    int getSize() const;
 
 };
 
