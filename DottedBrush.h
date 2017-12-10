@@ -7,6 +7,7 @@
 
 #include "Brush.h"
 
+//Dotted Brush
 class DottedBrush : public Brush {
 
 private:
@@ -16,19 +17,11 @@ private:
 
 public:
 
+    //Constructor
     DottedBrush(Map *mapIn);
 
-    int getDottedSpeed() const;
-    void setDottedSpeed(int speedIn);
-    void changeColor();
-    void setMap(Map mapIn);
+    //Only overriden method
     void drawHere(point location) override;
-    DottedBrush(int ds);
-
 };
-
-
-
-
 
 #endif //THE_STATISTICS_DOTTEDBRUSH_H
