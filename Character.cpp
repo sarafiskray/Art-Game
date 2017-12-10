@@ -131,6 +131,11 @@ void Character::be() {
     if (thisMap->isBeneath({location.x, location.y + 20}))  {
         verticalMomentum = 0;
     }
+    //so cannot go off top of screen
+    if (location.y <= 10) {
+        location.y = 10;
+        //verticalMomentum = 0;
+    }
 
     //Now report where the character is
     //cout << "Be: X: " << location.x << " Y: " << location.y << endl;
