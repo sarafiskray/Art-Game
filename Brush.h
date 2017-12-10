@@ -43,9 +43,9 @@ public:
     int getSize() const;
     bool getPainting() const;
 
-    color getColor() const;
-    color getPrevColor() const;
-    color getNextColor() const;
+    virtual color getColor() const;
+    virtual color getPrevColor() const;
+    virtual color getNextColor() const;
 
     string getBrushName() const;
     //No setBrushName, they're pre-set

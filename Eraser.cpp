@@ -26,3 +26,14 @@ void Eraser::drawHere(const point location) {
     }
 }
 
+color Eraser::getColor() const {
+    return whiteX;
+}
+
+color Eraser::getNextColor() const {
+    return whiteX;
+}
+
+color Eraser::getPrevColor() const {
+    return whiteX;
+}
